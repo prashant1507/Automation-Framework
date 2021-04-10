@@ -27,7 +27,7 @@ Below are the component details of the framework:
 -   <h4>Test Data</h4>
     Supports to read and maintain data from multiple file types like:<br/>
     -  Properties File<br/>
-    -  Excel File with the help of [ApachePOI Jars](https://mvnrepository.com/artifact/org.apache.poi/poi) <br/>
+    -  Excel File with the help of https://mvnrepository.com/artifact/org.apache.poi/poi[ApachePOI Jars] <br/>
     -  JSON File<br/>
 
 -   <h4>Test Scripts</h4>
