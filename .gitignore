@@ -1,0 +1,12 @@
+.settings
+.vscode
+.classpath
+.factorypath
+.project
+.idea
+.DS_STORE
+old-report-data.json
+target
+test-output
+reports-test-output
+reports-test-video-output
