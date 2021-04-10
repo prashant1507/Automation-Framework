@@ -27,11 +27,11 @@ Below are the component details of the framework:
 -   <h4>Test Data</h4>
     Supports to read and maintain data from multiple file types like:<br/>
     -  Properties File<br/>
-    -  Excel File with the help of https://mvnrepository.com/artifact/org.apache.poi/poi[ApachePOI Jars] <br/>
+    -  Excel File with the help of [ApachePOI Jars](https://mvnrepository.com/artifact/org.apache.poi/poi/) <br/>
     -  JSON File<br/>
 
 -   <h4>Test Scripts</h4>
-    [TestNg](https://mvnrepository.com/artifact/org.testng/testng) is used as a unit test framework in order to generate test script taking into account   the `Page Object Model` design pattern.
+    [TestNg](https://mvnrepository.com/artifact/org.testng/testng/) is used as a unit test framework in order to generate test script taking into account   the `Page Object Model` design pattern.
 
 -   <h4>Build Tool</h4>
     Using `maven`, project dependencies are managed. Test can be run using `pom.xml` and `testng.xml`.
