@@ -126,5 +126,10 @@ Below are the component details of the framework:
 -   Selenoid: SetupReadMe\Selenoid.md<br/>
 -   Docker Selenium Grid: SetupReadMe\Docker-Grid.md<br/>
 
+<h3>Notes:</h3>
+-   For Jenkins to support extent reporting (or other CSS, etc. components ) run below in scripts `jenkisURL/script`
+    ```
+    System.setProperty("hudson.model.DirectoryBrowserSupport.CSP","")
+    ```
 <h4>Known Issues:</h4>
 -   Video recording not possible for failed test case when running tests using docker. 
