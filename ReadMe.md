@@ -17,6 +17,7 @@ This is a java selenium framework which is using testng, maven, extent report, s
 -   Option to run tests on local or remote.<br/>
 -   Read data from Properties file, Excel, JSON files.<br/>
 -   Real time reporting using ELK.<br/>
+-   Option to run on docker grid or selenoid.
   
 <h3><i>Project Components</i></h3>  
 Below are the component details of the framework:
@@ -49,9 +50,13 @@ Below are the component details of the framework:
     -   Tests can be executed in parallel and in cross browsers by using:<br/>
         -    `pom.xml`<br/>
         -   `testng.xml`<br/>
+        -   `Jenkins`<br/>
     -   Tests can be executed using:<br/>
         -   `local browsers`<br/>
         -   `remote browsers`<br/>
+            -   docker selenium grid<br/>
+            -   selenium grid<br/>
+            -   selenoid<br/>
 
     <b>Note:</b> Will add support to run using Jenkins.
 
@@ -59,7 +64,7 @@ Below are the component details of the framework:
     -   [Monte Screen Recorder](https://mvnrepository.com/artifact/com.github.stephenc.monte/monte-screen-recorder) is used to record tests in `.avi` format.<br/>
     -   [Jave Core Package](https://mvnrepository.com/artifact/ws.schild/jave-core) and [Jave Windows 64 Bit Native Package](https://mvnrepository.com/artifact/ws.schild/jave-native-win64) is used to convert from `.avi` to `.mp4` to make it compatible with html5.<br/>
     -   [JavaMail API](https://mvnrepository.com/artifact/com.sun.mail/javax.mail) and [JavaBeans(TM) Activation Framework](https://mvnrepository.com/artifact/javax.activation/activation) is used to send the test report automatically on email using gmail or outlook. However, user can still decide if report has to be send or not.<br/><b>Note: Framework allows passwords in Base64Encode only.</b><br/>
-    -   [Jave Core Package](https://mvnrepository.com/artifact/ws.schild/jave-core) and [Jave Windows 64 Bit Native Package](https://mvnrepository.com/artifact/ws.schild/jave-           native-win64) is used to convert from `.avi` to `.mp4` to make it compatible with html5.<br/>
+    -   [Jave Core Package](https://mvnrepository.com/artifact/ws.schild/jave-core) and [Jave Windows 64 Bit Native Package](https://mvnrepository.com/artifact/ws.schild/jave-native-win64) is used to convert from `.avi` to `.mp4` to make it compatible with html5.<br/>
     -   [JavaMail API](https://mvnrepository.com/artifact/com.sun.mail/javax.mail) and [JavaBeans(TM) Activation Framework](https://mvnrepository.com/artifact/javax.activation/activation) is used to send the test report automatically on email using gmail or outlook. Moreover, user can still decide report to be send or not.<br/>   
         <b>Note: Framework allows passwords in Base64Encode only.</b><br/>
     -   All framework settings are done in properties file, making it easy for a non-technical person.<br/>

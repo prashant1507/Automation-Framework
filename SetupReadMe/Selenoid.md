@@ -31,15 +31,16 @@
       }
    }
     ```
-   
-2. Pull below images:
+2. Run compose file - src\test\resources\yml files\docker-compose-selenoid.yml
+   OR do below steps from 3 to 4 -------
+3. Pull below images:
    1. To run test cases: docker pull aerokube/selenoid
    2. To view the execution: docker pull aerokube/selenoid-ui
    3. To record execution: docker pull selenoid/video-recorder
    4. docker pull selenoid/vnc_chrome
    5. docker pull selenoid/vnc_firefox
    
-3. Start aerokube/selenoid
+4. Start aerokube/selenoid
    ```
    docker run -d --name selenoid -p 4444:4444 -v /var/run/docker.sock:/var/run/docker.sock -v PATH_TO_CONFIG_FOLDER:/etc/selenoid/:ro -v PATH_TO_VIDEO_FOLDER:/opt/selenoid/video/ -e OVERRIDE_VIDEO_OUTPUT_DIR=PATH_TO_VIDEO_FOLDER aerokube/selenoid:latest
    ```
@@ -47,9 +48,9 @@
    PATH_TO_VIDEO_FOLDER - where u want to mount the video folder of docker container   
    <b>Note:</b> By default selenoid provides 5 parallel session. To change this add `--limit=10` at the end of above command.
    
-4. Start aerokube/selenoid-ui to view execution (optional)
+5. Start aerokube/selenoid-ui to view execution (optional)
    ```
    docker run --rm -d --name selenoid-ui --link selenoid -p 8090:8080 aerokube/selenoid-ui --selenoid-uri=http://selenoid:4444
    ```
    
-5. That's it. Run the execution.
+6. That's it. Run the test execution.
