@@ -1,3 +1,4 @@
+#!/bin/bash
 PROPERTIESFILEPATH="src/test/resources/Jenkins/FrameworkJenkins.properties"
 
 if [[ $Url ]]; then
