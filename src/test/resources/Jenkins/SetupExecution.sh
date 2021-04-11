@@ -9,7 +9,7 @@ else
 fi
 
 if [[ $Env ]]; then
-    sed -i'' -e "s,env=,env=$Env,g" $PROPERTIESFILEPATH
+    sed -i'' -e "s,environment=,environment=$Env,g" $PROPERTIESFILEPATH
 else
     echo "Missing environmemnt name."
     exit 1
