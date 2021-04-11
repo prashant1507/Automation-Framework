@@ -29,7 +29,7 @@ else
 fi
 
 if [[ $RunMode ]]; then
-    sed -i'' -e "s,runmode=,runmode$RunMode,g" $PROPERTIESFILEPATH
+    sed -i'' -e "s,runmode=,runmode=$RunMode,g" $PROPERTIESFILEPATH
     if [[ $RemoteUrl ]]; then
         sed -i'' -e "s,remoteurl=,remoteurl=$RemoteUrl,g" $PROPERTIESFILEPATH
     else
