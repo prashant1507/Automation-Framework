@@ -2,7 +2,7 @@
 PROPERTIESFILEPATH="src/test/resources/Jenkins/FrameworkJenkins.properties"
 
 if [[ $Url ]]; then
-    sed -i'' -e "s,url=,url=$Url,g" $PROPERTIESFILEPATH
+    sed -i'' -e "s,urlforenv=,urlforenv=$Url,g" $PROPERTIESFILEPATH
 else
     echo "Missing URL for the environment."
     exit 1
@@ -91,7 +91,7 @@ if [[ $SendMailAfterExecution ]]; then
         exit 1
     fi
     if [[ $SenderEmailID ]]; then
-        sed -i'' -e "s,emailid=,emailid=$SenderEmailID,g" $PROPERTIESFILEPATH
+        sed -i'' -e "s,sendersid=,sendersid=$SenderEmailID,g" $PROPERTIESFILEPATH
     else
         echo "Missing Sender's Email ID."
         exit 1
@@ -103,7 +103,7 @@ if [[ $SendMailAfterExecution ]]; then
         exit 1
     fi
     if [[ $ReceiverMailID ]]; then
-        sed -i'' -e "s,receiversemailid=,receiversemailid=$ReceiverMailID,g" $PROPERTIESFILEPATH
+        sed -i'' -e "s,receiversid=,receiversid=$ReceiverMailID,g" $PROPERTIESFILEPATH
     else
         echo "Missing Receiver's Email ID."
         exit 1

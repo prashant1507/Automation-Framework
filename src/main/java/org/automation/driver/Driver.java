@@ -55,7 +55,7 @@ public final class Driver {
 			}
 			DriverManager.getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			DriverManager.getDriver().manage().window().maximize();
-			DriverManager.getDriver().get(PropertyUtils.get(ConfigProperties.URL));
+			DriverManager.getDriver().get(PropertyUtils.get(ConfigProperties.URLFORENV));
 		}
 	}
 

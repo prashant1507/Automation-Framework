@@ -13,7 +13,7 @@ package org.automation.enums;
  */
 public enum ConfigProperties {
 
-	URL,
+	URLFORENV,
 	TESTERNAME,
 	ENVIRONMENT,
 	DOWNLOADWEBDRIVER,
@@ -30,7 +30,7 @@ public enum ConfigProperties {
 	ELKSUITEURL,
 	SENDMAILAFTEREXECUTION,
 	SENDMAILUSING,
-	EMAILID,
+	SENDERSID,
 	EMAILPASSWORD,
-	RECEIVERSEMAILID;
+	RECEIVERSID;
 }

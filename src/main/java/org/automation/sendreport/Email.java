@@ -39,8 +39,8 @@ public final class Email {
 
 	static {
 		encodedPassword = PropertyUtils.get(ConfigProperties.EMAILPASSWORD);
-		receiversEmailID = PropertyUtils.get(ConfigProperties.RECEIVERSEMAILID);
-		emailId = PropertyUtils.get(ConfigProperties.EMAILID);
+		receiversEmailID = PropertyUtils.get(ConfigProperties.RECEIVERSID);
+		emailId = PropertyUtils.get(ConfigProperties.SENDERSID);
 		report = ReportPath.getReportPath();
 		reportName = report.split("/")[report.split("/").length - 1];
 

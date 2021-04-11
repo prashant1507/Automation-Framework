@@ -66,7 +66,7 @@ public final class ExtentReport {
 			try {
 				extentReports.setSystemInfo("Name", PropertyUtils.get(ConfigProperties.TESTERNAME));
 				extentReports.setSystemInfo("Environment", PropertyUtils.get(ConfigProperties.ENVIRONMENT));
-				extentReports.setSystemInfo("URL", PropertyUtils.get(ConfigProperties.URL));
+				extentReports.setSystemInfo("URL", PropertyUtils.get(ConfigProperties.URLFORENV));
 				extentReports.setSystemInfo("OS Platform", FrameworkConstants.getOsPlatform());
 				extentReports.setSystemInfo("OS Version", FrameworkConstants.getOsVersion());
 				extentReports.setSystemInfo("OS Architecture", FrameworkConstants.getOsArch());
