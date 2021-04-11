@@ -2,10 +2,10 @@
 
 This is a java selenium framework which is using testng, maven, extent report, selenium, java, etc to achieve different tasks.
 
-[Project's Java Docs](https://github.com/prashant1507/SeleniumAutomationFramework/blob/main/java-doc/)   
-[Sample Test Report](https://github.com/prashant1507/SeleniumAutomationFramework/blob/main/framework-generate-sample-report/)   
-[Sample Test Video](https://github.com/prashant1507/SeleniumAutomationFramework/blob/main/framework-generate-sample-report/)   
-[Properties file for execution settings](https://github.com/prashant1507/SeleniumAutomationFramework/blob/main/src/test/resources/config/FrameworkConfig.properties)
+[Project's Java Docs](https://github.com/prashant1507/Automation-Framework/tree/main/java-doc/)   
+[Sample Test Report](https://github.com/prashant1507/Automation-Framework/blob/main/framework-generate-sample-report/ExecutionReport.html)   
+[Sample Test Video](https://github.com/prashant1507/Automation-Framework/tree/main/framework-generate-sample-report)   
+[Properties file for execution settings](https://github.com/prashant1507/Automation-Framework/blob/main/src/test/resources/config/FrameworkConfig.properties)
 
 <h3><i>Project Features</i></h3>
 -   Supports parallel test.<br/>
