@@ -21,6 +21,10 @@ pipeline {
         string(name: 'SenderPassword', defaultValue: 'MzYzMDExNTJzU0BACg==', description: 'Sender\'s email password')
         string(name: 'ReceiverMailID', defaultValue: 'testmachine12345hot@outlook.com', description: 'Receiver\'s email ID')
     }
+    tools { 
+        maven 'Maven' 
+        jdk 'Java8' 
+    }
     stages {
         stage('Checking mandatory fields') {
             steps {
@@ -70,8 +74,12 @@ pipeline {
         }
         stage('Preparing Properties File') {
             steps {
-                sh('chmod +x src/test/resources/Jenkins/SetupExecution.sh')
-                sh('./src/test/resources/Jenkins/SetupExecution.sh')
+                sh '''
+                    chmod +x src/test/resources/Jenkins/SetupExecution.sh
+                    ./src/test/resources/Jenkins/SetupExecution.sh
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
             }
         }
         stage('Selenium Grid Setup') {
@@ -84,10 +92,10 @@ pipeline {
                 echo 'Hello Selenoid'
             }
         }
-        stage('Starting execution') {
-            steps {
-                readMavenPom file: 'pom.xml'
-            }
-        }
+        // stage('Starting execution') {
+        //     steps {
+        //         sh('mvn clean compile test')
+        //     }
+        // }
     }
 }
