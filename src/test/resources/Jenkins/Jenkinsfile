@@ -7,9 +7,6 @@ pipeline {
                 echo 'Hello Selenium'
             }
         }
-    }
-
-    stages {
         stage('Selenoid Setup') {
             steps {
                 echo 'Hello Selenoid'
