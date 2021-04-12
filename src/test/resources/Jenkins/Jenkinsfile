@@ -72,7 +72,6 @@ pipeline {
             steps {
                 sh('chmod +x src/test/resources/Jenkins/SetupExecution.sh')
                 sh('./src/test/resources/Jenkins/SetupExecution.sh')
-                sh('cat src/test/resources/config/FrameworkConfig.properties')
             }
         }
         stage('Selenium Grid Setup') {
@@ -83,6 +82,11 @@ pipeline {
         stage('Selenoid Setup') {
             steps {
                 echo 'Hello Selenoid'
+            }
+        }
+        stage('Selenoid Setup') {
+            steps {
+                sh 'mvn -f pom.xml clean install'
             }
         }
     }
