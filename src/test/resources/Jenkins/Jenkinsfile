@@ -84,7 +84,7 @@ pipeline {
                 echo 'Hello Selenoid'
             }
         }
-        stage('Selenoid Setup') {
+        stage('Starting execution') {
             steps {
                 sh 'mvn -f pom.xml clean install'
             }
