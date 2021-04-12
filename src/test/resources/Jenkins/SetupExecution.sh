@@ -28,7 +28,7 @@ else
     sed -i'' -e "s,downloadwebdriver=,downloadwebdriver=no,g" $PROPERTIESFILEPATH
 fi
 
-if [[ $RunMode ]]; then
+if [[ $RunMode == 'grid' ] || [ $RunMode == 'selenoid' ]]; then
     sed -i'' -e "s,runmode=,runmode=$RunMode,g" $PROPERTIESFILEPATH
     if [[ $RemoteUrl ]]; then
         sed -i'' -e "s,remoteurl=,remoteurl=$RemoteUrl,g" $PROPERTIESFILEPATH
