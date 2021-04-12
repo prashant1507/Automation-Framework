@@ -22,8 +22,8 @@ pipeline {
         string(name: 'ReceiverMailID', defaultValue: 'testmachine12345hot@outlook.com', description: 'Receiver\'s email ID')
     }
     tools { 
-        maven 'Maven' 
-        jdk 'Java8' 
+        maven 'Maven' // Name frome the Jenkins Global Configuration
+        jdk 'Java8' // Name frome the Jenkins Global Configuration
     }
     stages {
         stage('Checking Mandatory Fields') {
