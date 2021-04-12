@@ -86,7 +86,7 @@ pipeline {
         }
         stage('Starting execution') {
             steps {
-                sh 'mvn -f pom.xml clean install'
+                readMavenPom file: 'pom.xml'
             }
         }
     }
