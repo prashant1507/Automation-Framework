@@ -95,5 +95,17 @@ pipeline {
                 sh('mvn clean compile test')
             }
         }
+        stage('Publishing test report') {
+            steps {
+                publishHTML target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: false,
+                    reportDir: 'reports-test-output',
+                    reportFiles: 'Test Execution HTML Report',
+                    reportName: ''
+                ]
+            }
+        }
     }
 }
