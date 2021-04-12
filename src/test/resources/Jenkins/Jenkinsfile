@@ -77,8 +77,6 @@ pipeline {
                 sh '''
                     chmod +x src/test/resources/Jenkins/SetupExecution.sh
                     ./src/test/resources/Jenkins/SetupExecution.sh
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
                 '''
             }
         }
@@ -92,10 +90,10 @@ pipeline {
                 echo 'Hello Selenoid'
             }
         }
-        // stage('Starting execution') {
-        //     steps {
-        //         sh('mvn clean compile test')
-        //     }
-        // }
+        stage('Starting execution') {
+            steps {
+                sh('mvn clean compile test')
+            }
+        }
     }
 }
