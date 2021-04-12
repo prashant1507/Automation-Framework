@@ -26,7 +26,7 @@ pipeline {
         jdk 'Java8' 
     }
     stages {
-        stage('Checking mandatory fields') {
+        stage('Checking Mandatory Fields') {
             steps {
                 script{
                     if (params.SendMailAfterExecution == 'yes') {
@@ -90,12 +90,12 @@ pipeline {
                 echo 'Hello Selenoid'
             }
         }
-        stage('Starting execution') {
+        stage('Starting Execution') {
             steps {
                 sh('mvn clean compile test')
             }
         }
-        stage('Publishing test report') {
+        stage('Publishing Test Report') {
             steps {
                 publishHTML target: [
                     allowMissing: false,
