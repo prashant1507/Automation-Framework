@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Selenium Grid Setup') {
+            steps {
+                echo 'Hello Selenium'
+            }
+        }
+    }
+
+    stages {
+        stage('Selenoid Setup') {
+            steps {
+                echo 'Hello Selenoid'
+            }
+        }
+    }
+}
