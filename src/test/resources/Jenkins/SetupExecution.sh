@@ -111,3 +111,6 @@ if [[ $SendMailAfterExecution ]]; then
 else
     sed -i'' -e "s,sendmailafterexecution=,sendmailafterexecution=no,g" $PROPERTIESFILEPATH
 fi
+
+rm src/test/resources/config/FrameworkConfig.properties
+mv src/test/resources/Jenkins/FrameworkJenkins.properties src/test/resources/config/FrameworkConfig.properties
