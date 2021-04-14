@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Creating folder') {
+            steps {
+                sh '''
+                    sshpass -p qwerty11 ssh -o StrictHostKeyChecking=no administrator@192.168.0.142 "mkdir -p ~/jenkinsjob"
+                '''
+            }
+        }
+        stage('Copying compose file') {
+            steps {
+                sh '''
+                    sshpass -p qwerty11 scp -o StrictHostKeyChecking=no src/test/resources/docker/docker-compose-selenium-grid.yml administrator@192.168.0.142:~/jenkinsjob/
+                '''
+            }
+        }
+        stage('Setting up selenium grib environment') {
+            steps {
+                sh '''
+                    sshpass -p qwerty11 ssh -o StrictHostKeyChecking=no administrator@192.168.0.142 "sshpass -p qwerty11 sudo docker-compose -f ~/jenkinsjob/docker-compose-selenium-grid.yml up -d"
+                '''
+            }
+        }
+        stage("status code") {
+            steps {
+                sh '''
+                status=$?
+                    if [[ $status -eq 0 ]]; then
+    	                echo "Success"
+                    else
+                    	echo "Fail"
+                    	exit 1	
+                    fi
+                '''
+            }
+        }
+    }
+       
+}
