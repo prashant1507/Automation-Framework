@@ -26,7 +26,7 @@ pipeline {
         stage("status code") {
             steps {
                 sh '''
-                status=$?
+                    status=$?
                     if [[ $status -eq 0 ]]; then
     	                echo "Success"
                     else
