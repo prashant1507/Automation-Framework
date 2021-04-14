@@ -6,21 +6,21 @@ pipeline {
         stage('Creating folder') {
             steps {
                 script {
-                    status = sh (script:''' sshpass -p qwerty11 ssh -o StrictHostKeyChecking=no administrator@192.168.0.142 "mkdir -p ~/jenkinsjob" ''', returnStatus:true)
+                    status = sh (script:''' sshpass -p qwerty11 ssh -o StrictHostKeyChecking=no administrator@192.168.0.142 "mkdir -p ~/jenkinsjob/seleniumgrid" ''', returnStatus:true)
                 }
             }
         }
         stage('Copying compose file') {
             steps {
                 script {
-                    status = sh (script:''' sshpass -p qwerty11 scp -o StrictHostKeyChecking=no src/test/resources/docker/docker-compose-selenium-grid.yml administrator@192.168.0.142:~/jenkinsjob/ ''', returnStatus:true)
+                    status = sh (script:''' sshpass -p qwerty11 scp -o StrictHostKeyChecking=no src/test/resources/docker/docker-compose-selenium-grid.yml administrator@192.168.0.142:~/jenkinsjob/seleniumgrid ''', returnStatus:true)
                 }
             }
         }
-        stage('Setting up selenium grib environment') {
+        stage('Setting up selenium grid environment') {
             steps {
                 script {
-                    status = sh (script:''' sshpass -p qwerty11 ssh -o StrictHostKeyChecking=no administrator@192.168.0.142 "sshpass -p qwerty11 sudo docker-compose -f ~/jenkinsjob/docker-compose-selenium-grid.yml up -d" ''', returnStatus:true)
+                    status = sh (script:''' sshpass -p qwerty11 ssh -o StrictHostKeyChecking=no administrator@192.168.0.142 "sshpass -p qwerty11 sudo docker-compose -f ~/jenkinsjob/seleniumgrid/docker-compose-selenium-grid.yml up -d" ''', returnStatus:true)
                 }
             }
         }

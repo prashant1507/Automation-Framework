@@ -1,0 +1,38 @@
+def status
+pipeline {
+    agent any
+    
+    stages {
+        stage('Creating folder') {
+            steps {
+                script {
+                    status = sh (script:''' sshpass -p qwerty11 ssh -o StrictHostKeyChecking=no administrator@192.168.0.142 "mkdir -p ~/jenkinsjob/selenoid" ''', returnStatus:true)
+                }
+            }
+        }
+        stage('Copying compose file') {
+            steps {
+                script {
+                    status = sh (script:''' sshpass -p qwerty11 scp -o StrictHostKeyChecking=no src/test/resources/docker/docker-compose-selenoid.yml administrator@192.168.0.142:~/jenkinsjob/selenoid ''', returnStatus:true)
+                }
+            }
+        }
+        stage('Setting up selenoid environment') {
+            steps {
+                script {
+                    status = sh (script:''' sshpass -p qwerty11 ssh -o StrictHostKeyChecking=no administrator@192.168.0.142 "sshpass -p qwerty11 sudo docker-compose -f ~/jenkinsjob/selenoid/docker-compose-selenoid.yml up -d" ''', returnStatus:true)
+                }
+            }
+        }
+        stage("status code") {
+            steps {
+                script {
+                    if (status != 0) {
+                        echo "Fail"
+                        sh(''' exit 1 ''')
+                    }
+                }
+            }
+        }
+    }    
+}
