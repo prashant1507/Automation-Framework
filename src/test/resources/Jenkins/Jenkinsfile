@@ -102,8 +102,8 @@ pipeline {
                     alwaysLinkToLastBuild: false,
                     keepAll: false,
                     reportDir: 'reports-test-output',
-                    reportFiles: 'Test Execution HTML Report',
-                    reportName: ''
+                    reportFiles: '',
+                    reportName: 'Test Execution HTML Report'
                 ]
             }
         }
