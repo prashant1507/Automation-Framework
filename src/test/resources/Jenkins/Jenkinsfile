@@ -22,13 +22,13 @@ pipeline {
         string(name: 'ReceiverMailID', defaultValue: 'testmachine12345hot@outlook.com', description: 'Receiver\'s email ID')
     }
     tools { 
-        maven 'Maven' // Name frome the Jenkins Global Configuration
-        jdk 'Java8' // Name frome the Jenkins Global Configuration
+        maven 'Maven' // Name from the Jenkins Global Configuration
+        jdk 'Java8' // Name from the Jenkins Global Configuration
     }
     stages {
-        stage('Checking Mandatory Fields') {
+        stage('Checking Mandatory Fields') {http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=5210570
             steps {
-                script{
+                script{http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=5210570
                     if (params.SendMailAfterExecution == 'yes') {
                         if(params.SenderEmailID.isEmpty()) {
                             currentBuild.result = 'ABORTED'

@@ -18,8 +18,8 @@ This is a java selenium framework which is using testng, maven, extent report, s
 -   Read data from Properties file, Excel, JSON files.<br/>
 -   Real time reporting using ELK.<br/>
 -   Option to run on docker grid or selenoid.<br/>
--   Run using Jenkinsfile `src/test/resources/Jenkins/Jenkinsfile`.<br/>
--   Jenkinfile to setup docker-selenium-grid `src/test/resources/Jenkins/Jenkinsfile-selenium-grid`.<br/>
+-   **Run using Jenkinsfile ```src/test/resources/Jenkins/Jenkinsfile```.**<br/>
+-   **Jenkinfile to setup docker-selenium-grid `src/test/resources/Jenkins/Jenkinsfile-selenium-grid`.**<br/>
   
 <h3><i>Project Components</i></h3>  
 Below are the component details of the framework:
