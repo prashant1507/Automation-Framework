@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    node {
+        currentBuild.displayName = "Automation-Framework-Using-JenkinsFile-Pipeline"
+        currentBuild.description = "Job to execute test using jenkins file"
+    }
     options {
         buildDiscarder(
             logRotator(
