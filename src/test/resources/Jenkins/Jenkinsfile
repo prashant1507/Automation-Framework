@@ -26,9 +26,9 @@ pipeline {
         jdk 'Java8' // Name from the Jenkins Global Configuration
     }
     stages {
-        stage('Checking Mandatory Fields') {http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=5210570
+        stage('Checking Mandatory Fields') {
             steps {
-                script{http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=5210570
+                script{
                     if (params.SendMailAfterExecution == 'yes') {
                         if(params.SenderEmailID.isEmpty()) {
                             currentBuild.result = 'ABORTED'
