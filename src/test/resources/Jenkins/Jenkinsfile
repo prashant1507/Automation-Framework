@@ -1,9 +1,6 @@
 pipeline {
     agent any
-    node {
-        currentBuild.displayName = "Automation-Framework-Using-JenkinsFile-Pipeline"
-        currentBuild.description = "Job to execute test using jenkins file"
-    }
+    
     options {
         buildDiscarder(
             logRotator(
@@ -36,6 +33,14 @@ pipeline {
         jdk 'Java8' // Name from the Jenkins Global Configuration
     }
     stages {
+        stage('Job description') {
+            steps {
+                script {
+                    currentBuild.displayName = "Automation-Framework-Using-JenkinsFile-Pipeline"
+                    currentBuild.description = "Job to execute test using jenkins file"
+                }
+            }
+        }
         stage('Checking Mandatory Fields') {
             steps {
                 script{
