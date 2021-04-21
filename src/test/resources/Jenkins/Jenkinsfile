@@ -1,6 +1,12 @@
 pipeline {
     agent any
-
+    options {
+        buildDiscarder(
+            logRotator(
+                numToKeepStr: '5'
+            )
+        )
+    }
     parameters{
         string(name: 'Url', defaultValue: 'https://opensource-demo.orangehrmlive.com/', description: 'URL of the environment to be tested')
         string(name: 'Env', defaultValue: 'Production', description: 'Environment name')
