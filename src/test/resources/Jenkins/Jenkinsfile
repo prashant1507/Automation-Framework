@@ -33,14 +33,15 @@ pipeline {
         jdk 'Java8' // Name from the Jenkins Global Configuration
     }
     stages {
-        stage('Job description') {
-            steps {
-                script {
-                    currentBuild.displayName = "Automation-Framework-Using-JenkinsFile-Pipeline"
-                    currentBuild.description = "Job to execute test using jenkins file"
-                }
-            }
-        }
+        // Un-comment below line to give custom build name
+        // stage('Job description') {
+        //     steps {
+        //         script {
+        //             currentBuild.displayName = "Automation-Framework-Using-JenkinsFile-Pipeline"
+        //             currentBuild.description = "Job to execute test using jenkins file"
+        //         }
+        //     }
+        // }
         stage('Checking Mandatory Fields') {
             steps {
                 script{
