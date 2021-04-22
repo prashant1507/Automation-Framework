@@ -53,10 +53,7 @@ public class Listener implements ITestListener, ISuiteListener {
 			UserInputCheck.designerOutputForPasswordError();
 			System.exit(0);
 		}
-
-		if (PropertyUtils.get(ConfigProperties.DELETEOLDREPORTS).equals(FrameworkConstants.getYes())) {
-			DeleteFile.deleteOldReports();
-		}
+		DeleteFile.deleteOldReports();
 		ExtentReport.initReports();
 	}
 

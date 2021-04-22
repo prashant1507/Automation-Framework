@@ -43,12 +43,12 @@ public final class AviToMP4Convertor {
 		File target = new File(mp4Path);
 		AudioAttributes audio = new AudioAttributes();
 		audio.setCodec("libmp3lame");
-		audio.setBitRate(new Integer(800000));
-		audio.setChannels(new Integer(1));
+		audio.setBitRate(800000);
+		audio.setChannels(1);
 		VideoAttributes video = new VideoAttributes();
 		video.setCodec("libx264");
-		video.setBitRate(new Integer(3200000));
-		video.setFrameRate(new Integer(15));
+		video.setBitRate(3200000);
+		video.setFrameRate(15);
 		EncodingAttributes attrs = new EncodingAttributes();
 		attrs.setFormat(FrameworkConstants.getMp4());
 		attrs.setAudioAttributes(audio);
