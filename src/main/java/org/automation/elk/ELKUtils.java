@@ -3,13 +3,9 @@ package org.automation.elk;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.automation.constants.FrameworkConstants;
 import org.automation.enums.ConfigProperties;
 import org.automation.utils.PropertyUtils;
-
-import io.restassured.response.Response;
-
 import static io.restassured.RestAssured.*;
 
 /**
@@ -47,7 +43,7 @@ public final class ELKUtils {
 			map.put("Status", testStatus);
 			map.put("ExecutionTime", LocalDateTime.now().toString());
 			
-			Response res = given().header("Content-Type", "application/json")
+			given().header("Content-Type", "application/json")
 					.when()
 					.body(map)
 					.post(PropertyUtils.get(ConfigProperties.ELKSUITEURL));

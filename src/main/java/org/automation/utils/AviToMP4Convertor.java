@@ -38,7 +38,7 @@ public final class AviToMP4Convertor {
 	 * @param mp4Path path of the new .mp4 video.
 	 *
 	 */
-	public static void AviToMp4(String aviPath, String mp4Path) {
+	public static void aviToMp4(String aviPath, String mp4Path) {
 		File source = new File(aviPath);
 		File target = new File(mp4Path);
 		AudioAttributes audio = new AudioAttributes();

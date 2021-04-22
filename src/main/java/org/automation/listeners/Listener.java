@@ -104,7 +104,7 @@ public class Listener implements ITestListener, ISuiteListener {
 			}
 			String aviPath = ReportPath.getVideoFullPath();
 			String mp4Path = aviPath.replace("avi", "mp4");
-			AviToMP4Convertor.AviToMp4(aviPath, mp4Path);
+			AviToMP4Convertor.aviToMp4(aviPath, mp4Path);
 			ExtentLogger.fail("<a href='" + mp4Path + "'><span class='label fail'>Download Video</span></a>");
 		}
 		ELKUtils.sendDetailsToELK(
