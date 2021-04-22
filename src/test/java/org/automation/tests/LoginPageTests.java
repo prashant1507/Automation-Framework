@@ -32,16 +32,16 @@ public final class LoginPageTests extends BaseSetup {
 		loginPage.enterPassword(password);
 		// Using explicit wait in clickLoginBtn method
 		loginPage.clickLoginBtn();
-		Assert.assertEquals(homePage.getWelcomeText("Welcome"), true, "Failed to login.");
+		Assert.assertEquals(homePage.getWelcomeText("Welcome"), false, "Failed to login.");
 	}
 
 	@Test(testName = "Verify invalid login details", dataProvider = "InvalidLoginCreds", dataProviderClass = DataProviders.class, description = "Verify if user is not able to login using invalid credentials")
-	public void verifyInvalidLogin(String username, String password) {
+	public void verifyInvalidLogin(String username, String password) throws InterruptedException {
 		LoginPage loginPage = new LoginPage();
 		loginPage.enterUsername(username);
 		loginPage.enterPassword(password);
 		// Using explicit wait in clickLoginBtn method
 		loginPage.clickLoginBtn();
-		Assert.assertEquals(loginPage.getInvalidCredentialsErrorMsg(), "Invalid credentials", "Failed to login.");
+		Assert.assertEquals(loginPage.getInvalidCredentialsErrorMsg(), "Invalid credentialsss", "Failed to login.");
 	}
 }

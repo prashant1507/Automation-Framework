@@ -48,6 +48,6 @@ public final class HomePageTests extends BaseSetup {
 		loginPage.enterPassword(password);
 		// Using explicit wait in clickLoginBtn method
 		loginPage.clickLoginBtn();
-		Assert.assertEquals(loginPage.getInvalidCredentialsErrorMsg(), "Invalid credentialsssss", "Failed to login.");
+		Assert.assertEquals(loginPage.getInvalidCredentialsErrorMsg(), "Invalid credentials", "Failed to login.");
 	}
 }

@@ -30,7 +30,6 @@ public final class ExtentLogger {
 					MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
 		else
 			ExtentManager.getExtentTest().pass(msg);
-
 	}
 
 	public static void fail(String msg) {
@@ -39,7 +38,6 @@ public final class ExtentLogger {
 					MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
 		else
 			ExtentManager.getExtentTest().fail(msg);
-
 	}
 
 	public static void skip(String msg) {
@@ -48,6 +46,5 @@ public final class ExtentLogger {
 					MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
 		else
 			ExtentManager.getExtentTest().skip(msg);
-
 	}
 }
