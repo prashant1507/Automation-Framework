@@ -79,31 +79,28 @@ public final class Driver {
 	private static void setFirefoxDriver() {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		cap.setBrowserName(BrowserType.FIREFOX);
-		if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getGrid())) {
-			try {
+		try {
+			if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getGrid())) {
 				DriverManager
 						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.REMOTEURL)), cap));
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
-		} else if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getLocal())) {
-			if (PropertyUtils.get(ConfigProperties.DOWNLOADWEBDRIVER).equalsIgnoreCase(FrameworkConstants.getYes())) {
-				WebDriverManager.firefoxdriver().setup();
-			} else {
-				System.setProperty(FrameworkConstants.getFirefoxDriver(), setFirefoxDriverPath());
-			}
-			DriverManager.setDriver(new FirefoxDriver());
-		} else if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getSelenoid())) {
-			cap.setCapability("enableVNC", true);
-			cap.setCapability("enableVideo", true);
-			cap.setCapability("videoName",
-					"Test_" + (new SimpleDateFormat(FrameworkConstants.getDateTimeFormat1()).format(new Date())));
-			try {
+			} else if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getLocal())) {
+				if (PropertyUtils.get(ConfigProperties.DOWNLOADWEBDRIVER)
+						.equalsIgnoreCase(FrameworkConstants.getYes())) {
+					WebDriverManager.firefoxdriver().setup();
+				} else {
+					System.setProperty(FrameworkConstants.getFirefoxDriver(), setFirefoxDriverPath());
+				}
+				DriverManager.setDriver(new FirefoxDriver());
+			} else if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getSelenoid())) {
+				cap.setCapability("enableVNC", true);
+				cap.setCapability("enableVideo", true);
+				cap.setCapability("videoName",
+						"Test_" + (new SimpleDateFormat(FrameworkConstants.getDateTimeFormat1()).format(new Date())));
 				DriverManager
 						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.REMOTEURL)), cap));
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
 			}
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -115,31 +112,28 @@ public final class Driver {
 	private static void setChromeDriver() {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		cap.setBrowserName(BrowserType.CHROME);
-		if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getGrid())) {
-			try {
+		try {
+			if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getGrid())) {
 				DriverManager
 						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.REMOTEURL)), cap));
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
-		} else if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getLocal())) {
-			if (PropertyUtils.get(ConfigProperties.DOWNLOADWEBDRIVER).equalsIgnoreCase(FrameworkConstants.getYes())) {
-				WebDriverManager.chromedriver().setup();
-			} else {
-				System.setProperty(FrameworkConstants.getChromeDriver(), setChromeDriverPath());
-			}
-			DriverManager.setDriver(new ChromeDriver());
-		} else if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getSelenoid())) {
-			cap.setCapability("enableVNC", true);
-			cap.setCapability("enableVideo", true);
-			cap.setCapability("videoName",
-					"Test_" + (new SimpleDateFormat(FrameworkConstants.getDateTimeFormat1()).format(new Date())));
-			try {
+			} else if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getLocal())) {
+				if (PropertyUtils.get(ConfigProperties.DOWNLOADWEBDRIVER)
+						.equalsIgnoreCase(FrameworkConstants.getYes())) {
+					WebDriverManager.chromedriver().setup();
+				} else {
+					System.setProperty(FrameworkConstants.getChromeDriver(), setChromeDriverPath());
+				}
+				DriverManager.setDriver(new ChromeDriver());
+			} else if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getSelenoid())) {
+				cap.setCapability("enableVNC", true);
+				cap.setCapability("enableVideo", true);
+				cap.setCapability("videoName",
+						"Test_" + (new SimpleDateFormat(FrameworkConstants.getDateTimeFormat1()).format(new Date())));
 				DriverManager
 						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.REMOTEURL)), cap));
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
 			}
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
 		}
 	}
 
