@@ -1,6 +1,5 @@
 package org.automation.listeners;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Base64;
 import org.automation.constants.FrameworkConstants;
@@ -9,13 +8,11 @@ import org.automation.enums.ConfigProperties;
 import org.automation.reports.ExtentLogger;
 import org.automation.reports.ExtentManager;
 import org.automation.reports.ExtentReport;
-import org.automation.secreenrecorder.ScreenRecording;
-import org.automation.secreenrecorder.ScreenRecordingManager;
-import org.automation.utils.AviToMP4Convertor;
+import org.automation.testrecorder.TestRecording;
 import org.automation.utils.BrowserDetails;
+import org.automation.utils.DirectoryCreator;
 import org.automation.utils.PropertyUtils;
-import org.automation.utils.DeleteFile;
-import org.automation.utils.ReportPath;
+import org.automation.utils.DeleteFileAndFolders;
 import org.automation.utils.UserInputCheck;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
@@ -53,7 +50,8 @@ public class Listener implements ITestListener, ISuiteListener {
 			UserInputCheck.designerOutputForPasswordError();
 			System.exit(0);
 		}
-		DeleteFile.deleteOldReports();
+		DeleteFileAndFolders.deleteOldReports();
+		DeleteFileAndFolders.cleanScreenshotsDir();
 		ExtentReport.initReports();
 	}
 
@@ -64,12 +62,7 @@ public class Listener implements ITestListener, ISuiteListener {
 
 	public void onTestStart(ITestResult result) {
 		ExtentReport.createTests(result.getMethod().getDescription());
-
-		try {
-			ScreenRecording.startRecording();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		DirectoryCreator.createRequiredDirs();
 	}
 
 	public void onTestSuccess(ITestResult result) {
@@ -82,13 +75,12 @@ public class Listener implements ITestListener, ISuiteListener {
 				result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Test.class).testName(), "Pass");
 	}
 
-	/**
-	 * 
+	/** 
 	 * Record video in case of test fail. <br>
 	 * Apr 8, 2021
 	 */
 	public void onTestFailure(ITestResult result) {
-		ExtentManager.getExtentTest().assignCategory(BrowserDetails.browserDeatils().toString());
+		ExtentManager.getExtentTest().assignCategory(BrowserDetails.browserDeatils());
 		ExtentLogger.fail(result.getThrowable().toString() + "<br/><br/>"
 				+ Arrays.toString(result.getThrowable().getStackTrace()));
 		ExtentLogger.fail("Testcase: "
@@ -96,17 +88,8 @@ public class Listener implements ITestListener, ISuiteListener {
 				+ "<br/>" + (result.getClass()).toString().replace("class", "Class: ") + "<br/>" + "Method: "
 				+ result.getMethod().getMethodName() + "<br/> Status: Fail<br/>");
 
-		if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getLocal())) {
-			try {
-				ScreenRecordingManager.getRecorder().stop();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			String aviPath = ReportPath.getVideoFullPath();
-			String mp4Path = aviPath.replace("avi", "mp4");
-			AviToMP4Convertor.aviToMp4(aviPath, mp4Path);
-			ExtentLogger.fail("<a href='" + mp4Path + "'><span class='label fail'>Test Execution Video</span></a>");
-		}
+		ExtentLogger.info("<video width='620' height='340' controls> <source src='" + TestRecording.getRecording()
+				+ "' type='video/mp4'> <videos>");
 		ELKUtils.sendDetailsToELK(
 				result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Test.class).testName(), "Fail");
 	}
@@ -117,6 +100,8 @@ public class Listener implements ITestListener, ISuiteListener {
 				+ (result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Test.class).testName())
 				+ "<br/>" + (result.getClass()).toString().replace("class", "Class: ") + "<br/>" + "Method: "
 				+ result.getMethod().getMethodName() + "<br/> Status: Skip");
+		ExtentLogger.info("<video width='620' height='340' controls> <source src='" + TestRecording.getRecording()
+				+ "' type='video/mp4'> <videos>");
 		ELKUtils.sendDetailsToELK(
 				result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Test.class).testName(), "Skip");
 	}

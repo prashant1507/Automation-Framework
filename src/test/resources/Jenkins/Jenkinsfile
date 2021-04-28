@@ -42,6 +42,11 @@ pipeline {
         //         }
         //     }
         // }
+        stage('Clean workspace') {
+            steps {
+                deleteDir()
+            }
+        }
         stage('Checking Mandatory Fields') {
             steps {
                 script{

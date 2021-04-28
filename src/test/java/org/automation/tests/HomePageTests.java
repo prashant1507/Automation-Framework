@@ -25,7 +25,7 @@ public final class HomePageTests extends BaseSetup {
 		Assert.assertEquals(loginPage.isForgotPasswordLinkDisplayed(), false, "Forgot Password link is not displayed.");
 	}
 	
-	@Test(testName = "Skip test name", description = "Skip test case")
+	@Test(testName = "Skip test name homepage", description = "Skip test case homepage")
 	public void skip() {
 		throw new SkipException("hi, I am skipped");
 	}

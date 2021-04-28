@@ -2,10 +2,10 @@ package org.automation.tests;
 
 import org.automation.constants.FrameworkConstants;
 import org.automation.driver.Driver;
-import org.automation.utils.DeleteFile;
+import org.automation.media.ScreenshotPath;
+import org.automation.media.VideoPath;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 
 /*
@@ -21,6 +21,8 @@ public class BaseSetup {
 		String browser = context.getCurrentXmlTest().getParameter(FrameworkConstants.getBrowser());
 		try {
 			Driver.initDriver(browser);
+			ScreenshotPath.setCurrentTestExecutionScreenshotsDir();
+			VideoPath.setVideoPath();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -31,11 +33,8 @@ public class BaseSetup {
 		try {
 		} finally {
 			Driver.quiteDriver();
+			ScreenshotPath.unloadDir();
+			VideoPath.flushVideoPath();
 		}
-	}
-	
-	@AfterSuite
-	protected void delete() {
-		DeleteFile.deleteFilesUsingPattern(FrameworkConstants.getExecution(), FrameworkConstants.getAvi());
 	}
 }

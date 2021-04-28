@@ -21,7 +21,23 @@ public final class LoginPageTests extends BaseSetup {
 	
 	@Test(testName = "Skip test name", description = "Skip test case")
 	public void skip() {
+		LoginPage loginPage = new LoginPage();
+		loginPage.enterUsername("Admin567");
+		loginPage.enterPassword("admin123");
+		// Using explicit wait in clickLoginBtn method
+		loginPage.clickLoginBtn();
 		throw new SkipException("hi, I am skipped");
+	}
+	
+	@Test(testName = "Valid login details duplicate", description = "duplicate")
+	public void verifyLogin1() {
+		LoginPage loginPage = new LoginPage();
+		HomePage homePage = new HomePage();
+		loginPage.enterUsername("Admin77777777");
+		loginPage.enterPassword("admin123");
+		// Using explicit wait in clickLoginBtn method
+		loginPage.clickLoginBtn();
+		Assert.assertEquals(homePage.getWelcomeText("Welcome"), false, "Failed to login.");
 	}
 
 	@Test(testName = "Valid login details", dataProvider = "ValidLoginCreds", dataProviderClass = DataProviders.class, description = "Verify if user is able to login using valid credentials")

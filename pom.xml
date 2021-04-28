@@ -39,6 +39,14 @@
 
 	<dependencies>
 
+		<!-- Creating video using images -->
+		<dependency>
+			<groupId>org.jcodec</groupId>
+			<artifactId>jcodec-javase</artifactId>
+			<version>0.2.5</version>
+		</dependency>
+
+
 		<!-- Rest Assured -->
 		<dependency>
 			<groupId>io.rest-assured</groupId>

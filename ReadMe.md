@@ -100,8 +100,6 @@ Below are the component details of the framework:
 -   Screenshots:
     ```
     passedscreenshot - to take screenshot of passed test cases. Accepts yes or no.
-    failedscreenshot - to take screenshot of failed test cases. Accepts yes or no.
-    skippedscreenshot - to take screenshot of skipped test cases. Accepts yes or no.
     ```
 -   `retryfailedtestcases`to re-run fail test cases. Accepts yes or no. Not recommended setting to set it as yes.
 -   Email details to send report:
@@ -132,6 +130,4 @@ Below are the component details of the framework:
 -   For Jenkins to support extent reporting (or other CSS, etc. components ) run below in scripts `jenkisURL/script`<br/>
     ```
     System.setProperty("hudson.model.DirectoryBrowserSupport.CSP","")
-    ```
-<h4>Known Issues:</h4>
--   Video recording not possible for failed test case when running tests using docker. 
+    ``` 

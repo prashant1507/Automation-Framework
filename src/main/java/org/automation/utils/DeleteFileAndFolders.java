@@ -1,7 +1,9 @@
 package org.automation.utils;
 
 import java.io.File;
-import java.util.Objects;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.automation.constants.FrameworkConstants;
 import org.automation.enums.ConfigProperties;
 
@@ -17,14 +19,14 @@ import org.automation.enums.ConfigProperties;
  * @version 1.0
  * 
  */
-public final class DeleteFile {
+public final class DeleteFileAndFolders {
 
 	/**
 	 * 
 	 * Private constructor to avoid external instantiation <br>
 	 * Apr 7, 2021
 	 */
-	private DeleteFile() {
+	private DeleteFileAndFolders() {
 	}
 
 	/**
@@ -33,8 +35,8 @@ public final class DeleteFile {
 	 *
 	 */
 	public static void deleteOldReports() {
-		File targetDirForReport = new File(FrameworkConstants.getReportFolder());
-		File targetDirForVideos = new File(FrameworkConstants.getVideoFolder());
+		File targetDirForReport = new File(FrameworkConstants.getReportDir());
+		File targetDirForVideos = new File(FrameworkConstants.getVideoDir());
 		if (PropertyUtils.get(ConfigProperties.DELETEOLDREPORTS).equals(FrameworkConstants.getYes())) {
 			if (targetDirForReport.exists()) {
 				deleteOldFiles(targetDirForReport.listFiles());
@@ -60,30 +62,19 @@ public final class DeleteFile {
 			}
 		}
 	}
-
+	
 	/**
-	 * This function deletes the file based on the pattern. <br>
-	 * Apr 8, 2021
-	 * 
-	 * @param contains       keyword in the path
-	 * @param endsWithString end string of the path
+	 * This function will clean old data from screenshots folder
+	 * <br>
+	 * Apr 26, 2021
 	 *
 	 */
-	public static void deleteFilesUsingPattern(String contains, String endsWithString) {
-		File dir = new File(ReportPath.getVideoPath());
-		File[] files = dir.listFiles();
-		if (Objects.nonNull(files)) {
-			for (File f : files) {
-				if (f.toString().contains(contains) && f.toString().endsWith(endsWithString)) {
-					f.delete();
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-
-			}
+	public static void cleanScreenshotsDir() {
+		try {
+			if (new File(FrameworkConstants.getScreenshotsDir()).exists())
+				FileUtils.deleteDirectory(new File(FrameworkConstants.getScreenshotsDir()));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

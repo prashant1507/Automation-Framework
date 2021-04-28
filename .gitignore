@@ -1,5 +1,6 @@
 .settings
 .vscode
+.idea
 .classpath
 .factorypath
 .project
@@ -8,5 +9,7 @@
 old-report-data.json
 target
 test-output
-reports-test-output
-reports-test-video-output
+test-report-videos
+test-reports
+test-screenshots
+AutomationFramework.iml

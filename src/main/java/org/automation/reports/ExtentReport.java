@@ -7,7 +7,7 @@ import java.util.Objects;
 import org.automation.constants.FrameworkConstants;
 import org.automation.enums.ConfigProperties;
 import org.automation.utils.PropertyUtils;
-import org.automation.utils.ReportPath;
+import org.automation.utils.SetPath;
 
 import com.aventstack.extentreports.AnalysisStrategy;
 import com.aventstack.extentreports.ExtentReports;
@@ -50,7 +50,7 @@ public final class ExtentReport {
 	public static void initReports() {
 		if (Objects.isNull(extentReports)) {
 			// Setting the view order for the tabs in report
-			ExtentSparkReporter spark = new ExtentSparkReporter(ReportPath.getReportPath()).viewConfigurer()
+			ExtentSparkReporter spark = new ExtentSparkReporter(SetPath.getReportPath()).viewConfigurer()
 					.viewOrder().as(new ViewName[] { ViewName.DASHBOARD, ViewName.TEST, ViewName.CATEGORY,
 							ViewName.DEVICE, ViewName.AUTHOR })
 					.apply();
@@ -61,6 +61,7 @@ public final class ExtentReport {
 			spark.config().setReportName(FrameworkConstants.getReportName());
 			spark.config().setEncoding(FrameworkConstants.getUtf8Encoding());
 			spark.config().setTimeStampFormat(FrameworkConstants.getDateTimeFormat2());
+			spark.config().setOfflineMode(true);
 
 			// Setting up information
 			try {
@@ -70,7 +71,7 @@ public final class ExtentReport {
 				extentReports.setSystemInfo("OS Platform", FrameworkConstants.getOsPlatform());
 				extentReports.setSystemInfo("OS Version", FrameworkConstants.getOsVersion());
 				extentReports.setSystemInfo("OS Architecture", FrameworkConstants.getOsArch());
-				extentReports.setSystemInfo("Report Path", ReportPath.getReportPath());
+				extentReports.setSystemInfo("Report Path", SetPath.getReportPath());
 				extentReports.setAnalysisStrategy(AnalysisStrategy.TEST);
 				if (PropertyUtils.get(ConfigProperties.OVERRIDEREPORTS).equalsIgnoreCase(FrameworkConstants.getYes())) {
 					JsonFormatter json = new JsonFormatter("old-report-data.json");
@@ -95,9 +96,8 @@ public final class ExtentReport {
 			extentReports.flush();
 			try {
 				ExtentManager.unload();
-
 				// To open the report automatically in default browser
-				Desktop.getDesktop().browse(new File(ReportPath.getReportPath()).toURI());
+				Desktop.getDesktop().browse(new File(SetPath.getReportPath()).toURI());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

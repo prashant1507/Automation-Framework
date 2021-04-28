@@ -33,18 +33,14 @@ public final class ExtentLogger {
 	}
 
 	public static void fail(String msg) {
-		if (PropertyUtils.get(ConfigProperties.FAILEDSCREENSHOT).equalsIgnoreCase(FrameworkConstants.getYes()))
-			ExtentManager.getExtentTest().fail(msg,
-					MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
-		else
-			ExtentManager.getExtentTest().fail(msg);
+		ExtentManager.getExtentTest().fail(msg, MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
 	}
 
 	public static void skip(String msg) {
-		if (PropertyUtils.get(ConfigProperties.SKIPPEDSCREENSHOT).equalsIgnoreCase(FrameworkConstants.getYes()))
-			ExtentManager.getExtentTest().skip(msg,
-					MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
-		else
-			ExtentManager.getExtentTest().skip(msg);
+		ExtentManager.getExtentTest().skip(msg, MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
+	}
+	
+	public static void info(String msg) {
+		ExtentManager.getExtentTest().info(msg);
 	}
 }

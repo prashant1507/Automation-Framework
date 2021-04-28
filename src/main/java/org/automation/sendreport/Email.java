@@ -19,7 +19,7 @@ import javax.mail.internet.MimeMultipart;
 import org.automation.constants.FrameworkConstants;
 import org.automation.enums.ConfigProperties;
 import org.automation.utils.PropertyUtils;
-import org.automation.utils.ReportPath;
+import org.automation.utils.SetPath;
 
 /**
  * Email class is responsible for setting up the mail server. Its also responsible for sending the generated Test Report via email.
@@ -41,7 +41,7 @@ public final class Email {
 		encodedPassword = PropertyUtils.get(ConfigProperties.EMAILPASSWORD);
 		receiversEmailID = PropertyUtils.get(ConfigProperties.RECEIVERSID);
 		emailId = PropertyUtils.get(ConfigProperties.SENDERSID);
-		report = ReportPath.getReportPath();
+		report = SetPath.getReportPath();
 		reportName = report.split("/")[report.split("/").length - 1];
 
 	}

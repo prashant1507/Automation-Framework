@@ -40,18 +40,20 @@ public final class FrameworkConstants {
 			.concat("config/FrameworkConfig.properties");
 	private static final String FRAMEWORK_CONFIG_JSON_PATH = RESOURCES_PATH.concat("config/FrameworkConfig.json");
 	private static final String DATAFILE_PATH = RESOURCES_PATH.concat("data/Data.xlsx");
-	private static final String REPORT_FOLDER = USERDIR.concat("/reports-test-output");
-	private static final String VIDEO_FOLDER = USERDIR.concat("/reports-test-video-output");
-
+	
+	private static final String REPORT_DIR = USERDIR.concat("/test-reports");
+	private static final String VIDEO_DIR = USERDIR.concat("/test-report-videos");
+	private static final String SCREENSHOT_DIR = USERDIR.concat("/test-screenshots/");
+	
 	private static final String CHROMEDRIVER = "webdriver.chrome.driver";
 	private static final String FIREFOXDRIVER = "webdriver.gecko.driver";
 	private static final String CHROME = "Chrome";
 	private static final String FIREFOX = "Firefox";
 	private static final String BROWSER = "Browser";
-	public static final String WINDOWS = "Windows";
+	private static final String WINDOWS = "Windows";
 	private static final String MACOS = "Mac OS";
 
-	public static final String DATETIME_FORMAT1 = "dd_MM_yyyy_hh_mm_ss";
+	public static final String DATETIME_FORMAT1 = "dd_MM_yyyy_hh_mm_ss_SSS";
 	private static final String DATETIME_FORMAT2 = "dd/MM/yyyy HH:mm:ss";
 	private static final String UTF8_ENCODING = "UTF-8";
 	private static final String REPORT_NAME = "QA Test Report";
@@ -126,8 +128,8 @@ public final class FrameworkConstants {
 		return FRAMEWORK_CONFIG_JSON_PATH;
 	}
 
-	public static String getReportFolder() {
-		return REPORT_FOLDER;
+	public static String getReportDir() {
+		return REPORT_DIR;
 	}
 	
 	public static String getExecutePermission() {
@@ -210,8 +212,12 @@ public final class FrameworkConstants {
 		return BROWSER;
 	}
 
-	public static String getVideoFolder() {
-		return VIDEO_FOLDER;
+	public static String getVideoDir() {
+		return VIDEO_DIR;
+	}
+	
+	public static String getScreenshotsDir() {
+		return SCREENSHOT_DIR;
 	}
 
 	public static String getGrid() {

@@ -18,7 +18,7 @@ public final class BrowserDetails {
 	private BrowserDetails() {
 	}
 	
-	static String browserName() {
+	public static String browserName() {
 		Capabilities cap = ((RemoteWebDriver) DriverManager.getDriver()).getCapabilities();
 		return capatilize(cap.getBrowserName());
 	}

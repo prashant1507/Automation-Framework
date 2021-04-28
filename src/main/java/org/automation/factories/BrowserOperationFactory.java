@@ -42,7 +42,7 @@ public final class BrowserOperationFactory {
 		return DriverManager.getDriver().getWindowHandle();
 	}
 	
-	public static void switchtoWindow(String windowName) {
+	public static void switchToWindow(String windowName) {
 		DriverManager.getDriver().switchTo().window(windowName);
 	}
 
