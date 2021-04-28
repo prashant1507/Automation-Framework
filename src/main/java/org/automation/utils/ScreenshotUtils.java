@@ -1,11 +1,12 @@
 package org.automation.utils;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import org.apache.commons.io.FileUtils;
+import javax.imageio.ImageIO;
 import org.automation.constants.FrameworkConstants;
 import org.automation.driver.DriverManager;
 import org.automation.media.ScreenshotPath;
@@ -52,10 +53,16 @@ public final class ScreenshotUtils {
 	 *
 	 */
 	static void getImageAsFile(String dir) {
-		String screenShotName = dir + "/screenshot_" + new SimpleDateFormat(FrameworkConstants.getDateTimeFormat1()).format(new Date()) + ".jpeg";
-		TakesScreenshot ts = (TakesScreenshot) DriverManager.getDriver();
+		String screenShotName = dir + "/screenshot_" + new SimpleDateFormat(FrameworkConstants.getDateTimeFormat1()).format(new Date()) + ".png";
+		File ts = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
 		try {
-			FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), new File(screenShotName));
+			// Setting image dimension as an even value 888 x 1920 (w x h)
+			BufferedImage inputImage = ImageIO.read(ts.getAbsoluteFile());
+			BufferedImage outputImage = new BufferedImage(1920, 888, inputImage.getType());
+			Graphics2D g2d = outputImage.createGraphics();
+		    g2d.drawImage(inputImage, 0, 0, 1920, 888, null);
+		    g2d.dispose();
+		    ImageIO.write(outputImage, "png", new File(screenShotName));
 		} catch (WebDriverException e) {
 			e.printStackTrace();
 		} catch ( IOException e) {

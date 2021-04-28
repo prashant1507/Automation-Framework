@@ -123,7 +123,7 @@ pipeline {
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
                     keepAll: false,
-                    reportDir: 'reports-test-output',
+                    reportDir: 'test-reports',
                     reportFiles: '',
                     reportName: 'Test Execution HTML Report'
                 ]
