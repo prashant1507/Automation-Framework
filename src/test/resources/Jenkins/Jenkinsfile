@@ -124,8 +124,8 @@ pipeline {
                     alwaysLinkToLastBuild: false,
                     keepAll: false,
                     reportDir: 'test-reports',
-                    reportFiles: '',
-                    reportName: 'Test Execution HTML Report'
+                    reportFiles: '*.html',
+                    reportName: 'Test Execution Report'
                 ]
             }
         }
