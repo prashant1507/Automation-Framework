@@ -45,6 +45,7 @@ pipeline {
         stage('Clean workspace') {
             steps {
                 deleteDir()
+                checkout scm
             }
         }
         stage('Checking Mandatory Fields') {
