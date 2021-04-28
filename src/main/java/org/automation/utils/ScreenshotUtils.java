@@ -56,7 +56,9 @@ public final class ScreenshotUtils {
 		TakesScreenshot ts = (TakesScreenshot) DriverManager.getDriver();
 		try {
 			FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), new File(screenShotName));
-		} catch (WebDriverException | IOException e) {
+		} catch (WebDriverException e) {
+			e.printStackTrace();
+		} catch ( IOException e) {
 			e.printStackTrace();
 		}
 	}
