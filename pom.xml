@@ -35,6 +35,7 @@
 		<jave-core.version>2.4.5</jave-core.version>
 		<xmlbeans.version>5.0.0</xmlbeans.version>
 		<rest-assured.version>4.3.3</rest-assured.version>
+		<jcode-javas.version>0.2.5</jcode-javas.version>
 	</properties>
 
 	<dependencies>
@@ -43,7 +44,7 @@
 		<dependency>
 			<groupId>org.jcodec</groupId>
 			<artifactId>jcodec-javase</artifactId>
-			<version>0.2.5</version>
+			<version>${jcode-javas.version}</version>
 		</dependency>
 
 
@@ -52,18 +53,6 @@
 			<groupId>io.rest-assured</groupId>
 			<artifactId>rest-assured</artifactId>
 			<version>${rest-assured.version}</version>
-		</dependency>
-
-		<!-- To convert .avi to mp4 -->
-		<dependency>
-			<groupId>ws.schild</groupId>
-			<artifactId>jave-core</artifactId>
-			<version>${jave-core.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ws.schild</groupId>
-			<artifactId>jave-native-win64</artifactId>
-			<version>${jave-native-win64.version}</version>
 		</dependency>
 
 		<!-- For managing wedDriverManager -->
@@ -94,13 +83,6 @@
 			<version>${activation.version}</version>
 		</dependency>
 
-		<!-- To record video -->
-		<dependency>
-			<groupId>com.github.stephenc.monte</groupId>
-			<artifactId>monte-screen-recorder</artifactId>
-			<version>${monte-screen-recorder.version}</version>
-		</dependency>
-
 		<!-- Jars for interacting with XLSX files -->
 		<dependency>
 			<groupId>org.apache.directory.studio</groupId>
@@ -113,7 +95,6 @@
 			<artifactId>xmlbeans</artifactId>
 			<version>${xmlbeans.version}</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.apache.poi</groupId>

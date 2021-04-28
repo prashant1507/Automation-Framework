@@ -3,8 +3,8 @@ package org.automation.testrecorder;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Comparator;
+//import java.util.Arrays;
+//import java.util.Comparator;
 import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
 import org.automation.media.ScreenshotPath;
@@ -41,7 +41,7 @@ public final class TestRecording {
 		try {
 			AWTSequenceEncoder awtEncoder = AWTSequenceEncoder.createSequenceEncoder(new File(videoPath), 1);
 			File[] screenshots = new File(screenshotsDir).listFiles();
-			Arrays.sort(screenshots, Comparator.comparingLong(File::lastModified));
+			// Arrays.sort(screenshots, Comparator.comparingLong(File::lastModified));
 			for (File screenshot : screenshots) {
 				BufferedImage image = ImageIO.read(screenshot.getAbsoluteFile());
 				awtEncoder.encodeImage(image);
