@@ -117,11 +117,11 @@ Below are the component details of the framework:
         
         **Note:** More fields can be added and changes should be done accordingly in ELKUtils.class
 
-#### How to setup:
+### How to setup:
 [Selenoid](SetupReadMe/Selenoid.md)  
 [Docker-Grid](SetupReadMe/Docker-Grid.md)
 
-#### Notes:
+### Notes:
 1.	For Jenkins to support extent reporting (or other CSS, etc. components ) run below in scripts `https://jenkisURL/script`
       `System.setProperty("hudson.model.DirectoryBrowserSupport.CSP","")`	
 2. Project required [lombok setup](https://www.baeldung.com/lombok-ide).
