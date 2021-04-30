@@ -1,96 +1,90 @@
-<h1><i>Automation Framework</i></h1> 
+# _Automation Framework_
 
 This is a java selenium framework which is using testng, maven, extent report, selenium, java, etc to achieve different tasks.
 
-[Project's Java Docs](https://github.com/prashant1507/Automation-Framework/tree/main/java-doc/)   
-[Sample Test Report](https://github.com/prashant1507/Automation-Framework/blob/main/framework-generate-sample-report/ExecutionReport.html)   
-[Sample Test Video](https://github.com/prashant1507/Automation-Framework/tree/main/framework-generate-sample-report)   
-[Properties file for execution settings](https://github.com/prashant1507/Automation-Framework/blob/main/src/test/resources/config/FrameworkConfig.properties)
+[Project's Java Docs](java-doc)   
+[Sample Test Report](framework-generate-sample-report/ExecutionReport.html)   
+[Sample Test Video](framework-generate-sample-report)   
+[Properties file for execution settings](src/test/resources/config/Config.properties)
 
-<h3><i>Project Features</i></h3>
--   Supports parallel test.<br/>
--   Multiple browsers can be setup.<br/>
--   Generates report after each run for all test cases with screenshots.<br/>
--   Record video for failed test cases.<br/>
--   Option to auto manage drives using WebDriverManager.<br/>
--   Option to send report to email.<br/>
--   Option to run tests on local or remote.<br/>
--   Read data from Properties file, Excel, JSON files.<br/>
--   Real time reporting using ELK.<br/>
--   Option to run on docker grid or selenoid.<br/>
--   **Run using Jenkinsfile ```src/test/resources/Jenkins/Jenkinsfile```.**<br/>
--   **Jenkinfile to setup docker-selenium-grid `src/test/resources/Jenkins/Jenkinsfile-selenium-grid`.**<br/>
+### _Project Features_
+- Supports parallel test.   
+- Multiple browsers can be setup.
+- Generates report after each run for all test cases with screenshots.
+- Record video for failed test cases.
+- Option to auto manage drives using WebDriverManager.
+- Option to send report to email.
+- Option to run tests on local or remote.
+- Read data from Properties file, Excel, JSON files.
+- Real time reporting using ELK.
+- Option to run on docker grid or selenoid.<br/>
+- Run using [JenkinsFile](src/test/resources/Jenkins/Jenkinsfile).
+- [JenkinsFile to setup docker-selenium-grid](src/test/resources/Jenkins/Jenkinsfile-selenium-grid).
   
-<h3><i>Project Components</i></h3>  
+### _Project Components_
 Below are the component details of the framework:
 
--   <h4>Browser interaction using</h4>
+- #### Browser interaction using
     `selenium`
 
--   <h4>Test Data</h4>
-    Supports to read and maintain data from multiple file types like:<br/>
-    -  Properties File<br/>
-    -  Excel File with the help of [ApachePOI Jars](https://mvnrepository.com/artifact/org.apache.poi/poi/) <br/>
-    -  JSON File<br/>
+- #### Test Data
+    Supports to read and maintain data from multiple file types like:
+    -  Properties File
+    -  Excel File with the help of [ApachePOI Jars](https://mvnrepository.com/artifact/org.apache.poi/poi/)
+    -  JSON File
 
--   <h4>Test Scripts</h4>
+-   #### Test Scripts
     [TestNg](https://mvnrepository.com/artifact/org.testng/testng/) is used as a unit test framework in order to generate test script taking into account   the `Page Object Model` design pattern.
 
--   <h4>Build Tool</h4>
+-   #### Build Tool
     Using `maven`, project dependencies are managed. Test can be run using `pom.xml` and `testng.xml`.
 
--   <h4>Reporting</h4>
+-   #### Reporting
     Generates html report automatically by using [Extent Report 5](https://www.extentreports.com/docs/versions/5/java/index.html).
-    By attaching screenshots and execution videos of the failed test cases. However, user can set the framework to take screenshots
-    and videos of passed or/and skipped test cases. All reports are generated in `reports-test-output` folder. Report automatically opens in default browser.<br/>      
-    <b>Note:</b> Exception logs and fail reasons are added to the report as well. All images are in Base64 and videos in mp4.
+    By attaching screenshots and execution videos of the failed test cases.<br/>
+    However, user can set the framework to take screenshots and videos of passed or/and skipped test cases. All reports are generated in `reports-test-output` folder. Report automatically opens in default browser.     
+    **Note:** Exception logs and fail reasons are added to the report as well. All images are in Base64 and videos in mp4.
 
--   <h4>Utilities</h4>
+-   #### Utilities
     Holds common methods to re-use in order to achieve maximum re-usability.
 
--   <h4>Test Runner</h4>
-    -   Tests can be executed in parallel and in cross browsers by using:<br/>
-        -    `pom.xml`<br/>
-        -   `testng.xml`<br/>
-        -   `Jenkins`<br/>
-    -   Tests can be executed using:<br/>
-        - local browsers <br/>
-        - remote browsers <br/>
-        -	docker selenium grid<br/>
-        -	selenium grid<br/>
-        -	selenoid<br/>
-
-    <b>Note:</b> Will add support to run using Jenkins.
-
--   <h4>Other Components</h4>
-    -   [Monte Screen Recorder](https://mvnrepository.com/artifact/com.github.stephenc.monte/monte-screen-recorder) is used to record tests in `.avi` format.<br/>
-    -   [Jave Core Package](https://mvnrepository.com/artifact/ws.schild/jave-core) and [Jave Windows 64 Bit Native Package](https://mvnrepository.com/artifact/ws.schild/jave-native-win64) is used to convert from `.avi` to `.mp4` to make it compatible with html5.<br/>
-    -   [JavaMail API](https://mvnrepository.com/artifact/com.sun.mail/javax.mail) and [JavaBeans(TM) Activation Framework](https://mvnrepository.com/artifact/javax.activation/activation) is used to send the test report automatically on email using gmail or outlook. However, user can still decide if report has to be send or not.<br/><b>Note: Framework allows passwords in Base64Encode only.</b><br/>
-    -   [Jave Core Package](https://mvnrepository.com/artifact/ws.schild/jave-core) and [Jave Windows 64 Bit Native Package](https://mvnrepository.com/artifact/ws.schild/jave-native-win64) is used to convert from `.avi` to `.mp4` to make it compatible with html5.<br/>
-    -   [JavaMail API](https://mvnrepository.com/artifact/com.sun.mail/javax.mail) and [JavaBeans(TM) Activation Framework](https://mvnrepository.com/artifact/javax.activation/activation) is used to send the test report automatically on email using gmail or outlook. Moreover, user can still decide report to be send or not.<br/>   
-        <b>Note: Framework allows passwords in Base64Encode only.</b><br/>
-    -   All framework settings are done in properties file, making it easy for a non-technical person.<br/>
-    -   User can opt to run the test with their web drivers placed in drivers folder or with WebDriverManager.<br/>
+-   #### Test Runner
+    -   Tests can be executed in parallel and in cross browsers by using:
+        - [pom.xml](pom.xml)
+        - [testng.xml](testng.xml)
+        - Jenkins
+    -   Tests can be executed using:
+        - local browsers
+        - remote browsers
+        - docker selenium grid
+        - selenium grid
+        - selenoid
     
-<br/>
-<h3>How to run:</h3>
-1. Set all the properties and setting in properties file.<br/>
-2. Run pom.xml or testng.xml file.
-<br/>
-<h3>Settings of Properties file</h3>
+    **Note:** Will add support to run using Jenkins.
 
-[Path to properties file](https://github.com/prashant1507/SeleniumAutomationFramework/blob/main/src/test/resources/config/FrameworkConfig.properties)
+-   #### Other Components
+    - [JavaMail API](https://mvnrepository.com/artifact/com.sun.mail/javax.mail) and [JavaBeans(TM) Activation Framework](https://mvnrepository.com/artifact/javax.activation/activation) is used to send the test report automatically on email using gmail or outlook. However, user can still decide if report has to be send or not.<br/>
+      **Note:** Framework allows passwords in `Base64Encode` only.
+    - All framework settings are done in properties file, making it easy for a non-technical user.
+    - User can opt to run the test with their web drivers placed in drivers folder or with WebDriverManager.
+
+
+### Getting Started:
+1. Set all the properties and setting in properties file.
+2. Run pom.xml or testng.xml file.
+
+### Settings for Properties file
+[Path to properties file](src/test/resources/config/Config.properties)
 
 -   `url` of the test environment.
 -   `environment` where the test has to be performed.
 -   `testername` inorder to keep track.
 -   `downloadwebdriver` to decide if tester want to place the drivers or wants the framework to download it with the help of [WebDriverManager](https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager).
--	`runmode` decides whether to run test cases on local, grid (/ docker-grid) or selenoid. Accepts yes or no.<br/>
+-	`runmode` decides whether to run test cases on local, grid (/ docker-grid) or selenoid. Accepts yes or no.
      -  if `runmode` is yes then user has to provide the remote url in `remoteurl`.
 -   `environment` which is to be tested.
 -   `testername` name of the tester.
 -   `downloadwebdriver` to decide if tester wants to place the drivers or wants the framework to download it with [WebDriverManager](https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager).
-
 -   To delete old report data:
     ```
     deleteoldreports - to elect if tester wants to delete old reports. Accepts yes or no.
@@ -110,23 +104,24 @@ Below are the component details of the framework:
     emailpassword - sender's password in Base64Encode only.
     receiversemailid - receiver's email id.
     ```   
-    <b>Note:</b> In order to use gmail then enable [Allow less secure apps](https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4M-tPfEQqsOBVtOWL9wQTcuoh6uNQC7kNHqA1IgKKctttT5U20uTAcW3mpM7VQfCoTrdrwVnEpKLMfkCsRkGPUziWpq5A)
+    **Note**: In order to use gmail then enable [Allow less secure apps](https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4M-tPfEQqsOBVtOWL9wQTcuoh6uNQC7kNHqA1IgKKctttT5U20uTAcW3mpM7VQfCoTrdrwVnEpKLMfkCsRkGPUziWpq5A)
 -   Setup real time report using ELK:   
     ```
     useelk - to enable using real time reporting using ELK. Accepts yes or no.
     elksuiteurl - url of the elastic search data add.
     ```
-    <b>Note:</b> To use ELK, set the schema to have below keys:
+    **Note:** To use ELK, set the schema to have below keys:
     -   TestName
     -   Status
-    -   ExecutionTime<br/>
-    More fields can be added and changes should be done accordingly in ELKUtils.class
+    -   ExecutionTime
+        
+        **Note:** More fields can be added and changes should be done accordingly in ELKUtils.class
 
-<h3> How to setup:</h3>
--   Selenoid: SetupReadMe\Selenoid.md<br/>
--   Docker Selenium Grid: SetupReadMe\Docker-Grid.md<br/>
+#### How to setup:
+[Selenoid](SetupReadMe/Selenoid.md)  
+[Docker-Grid](SetupReadMe/Docker-Grid.md)
 
-<h3>Notes:</h3>
-1.	For Jenkins to support extent reporting (or other CSS, etc. components ) run below in scripts `jenkisURL/script`<br/>
-	-	System.setProperty("hudson.model.DirectoryBrowserSupport.CSP","")<br/>	
-2. Project required lombok setup.
+#### Notes:
+1.	For Jenkins to support extent reporting (or other CSS, etc. components ) run below in scripts `https://jenkisURL/script`
+      `System.setProperty("hudson.model.DirectoryBrowserSupport.CSP","")`	
+2. Project required [lombok setup](https://www.baeldung.com/lombok-ide).
