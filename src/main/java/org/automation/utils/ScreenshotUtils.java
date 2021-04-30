@@ -34,7 +34,7 @@ public final class ScreenshotUtils {
 	 * This function will return image as Base64 and will save image as png for creating video.
 	 * <br>
 	 * Apr 26, 2021
-	 *
+	 * @return Screenshot in Base64
 	 */
 	public static String getBase64Image() {
 		getImageAsFile(ScreenshotPath.getCurrentTestExecutionScreenshotsDir());

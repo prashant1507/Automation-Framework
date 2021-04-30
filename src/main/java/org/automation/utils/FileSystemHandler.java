@@ -64,7 +64,7 @@ public final class FileSystemHandler {
 	 * This function will clean old data from screenshots folder
 	 * <br>
 	 * Apr 26, 2021
-	 *
+	 * @param path Directory path to be deleted
 	 */
 	public static void deleteDir(String path) {
 		try {
@@ -78,8 +78,6 @@ public final class FileSystemHandler {
 	/**
 	 * This method will create the directories required by framework <br>
 	 * Apr 26, 2021
-	 * 
-	 * @param
 	 *
 	 */
 	public static void createRequiredDirs() {

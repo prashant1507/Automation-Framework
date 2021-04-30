@@ -31,7 +31,7 @@ public final class TestRecording {
 	/**
 	 * This method creates a video from collection of images <br>
 	 * Apr 26, 2021
-	 *
+	 * @return videoPath path of the video
 	 */
 	public static String getRecording() {
 		String videoPath = VideoPath.getVideoPath();

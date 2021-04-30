@@ -36,7 +36,7 @@ public final class ScreenshotPath {
 	/**
 	 * This method return current test execution screenshot folder <br>
 	 * Apr 26, 2021
-	 *
+	 * @return return directory for current test's screenshot folder
 	 */
 	public static String getCurrentTestExecutionScreenshotsDir() {
 		return dir.get();

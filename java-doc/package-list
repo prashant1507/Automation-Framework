@@ -7,7 +7,8 @@ org.automation.factories
 org.automation.listeners
 org.automation.pages
 org.automation.reports
-org.automation.secreenrecorder
 org.automation.sendreport
+org.automation.setpath
+org.automation.testrecorder
 org.automation.tests
 org.automation.utils
