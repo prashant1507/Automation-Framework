@@ -70,7 +70,7 @@ Below are the component details of the framework:
 
 
 ### Getting Started:
-1. Set all the properties and setting in properties file.
+1. Set all the properties/setting in [properties file](src/test/resources/config/Config.properties).
 2. Run pom.xml or testng.xml file.
 
 ### Settings for Properties file
@@ -117,7 +117,7 @@ Below are the component details of the framework:
         
         **Note:** More fields can be added and changes should be done accordingly in ELKUtils.class
 
-### How to setup:
+### How to set up:
 [Selenoid](SetupReadMe/Selenoid.md)  
 [Docker-Grid](SetupReadMe/Docker-Grid.md)
 
