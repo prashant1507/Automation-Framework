@@ -1,8 +1,10 @@
 package org.automation.driver;
 
-import java.util.Objects;
 
 import org.openqa.selenium.WebDriver;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * This class is responsible in setting and getting the web driver instance.
@@ -15,16 +17,8 @@ import org.openqa.selenium.WebDriver;
  * @version 1.0
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class DriverManager {
-
-	/**
-	 * 
-	 * Private constructor to avoid external instantiation
-	 * <br>
-	 * Apr 8, 2021
-	 */
-	private DriverManager() {
-	}
 
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 	
@@ -47,8 +41,7 @@ public final class DriverManager {
 	 *
 	 */
 	static void setDriver(WebDriver driverRef) {
-		if (Objects.nonNull(driverRef))
-			driver.set(driverRef);
+		driver.set(driverRef);
 	}
 
 	/**

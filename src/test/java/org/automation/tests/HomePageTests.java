@@ -10,9 +10,6 @@ import org.testng.annotations.Test;
 
 public final class HomePageTests extends BaseSetup {
 
-	private HomePageTests() {
-	}
-
 	@Test(testName = "Verify page title", description = "Verify the page tiltle of Login Page")
 	public void verifyPageTitle() {
 		HomePage homePage = new HomePage();

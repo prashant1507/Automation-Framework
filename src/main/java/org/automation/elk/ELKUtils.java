@@ -3,9 +3,13 @@ package org.automation.elk;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
-import org.automation.constants.FrameworkConstants;
-import org.automation.enums.ConfigProperties;
+import org.automation.constants.GlobalVars;
+import org.automation.enums.ConfigMap;
 import org.automation.utils.PropertyUtils;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import static io.restassured.RestAssured.*;
 
 /**
@@ -18,15 +22,8 @@ import static io.restassured.RestAssured.*;
  * @version 1.0
  * 
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ELKUtils {
-	/**
-	 * 
-	 * Private constructor to avoid external instantiation
-	 * <br>
-	 * Apr 9, 2021
-	 */
-	private ELKUtils() {
-	}
 	
 	/**
 	 * This method sends details of test execution to ELK
@@ -37,7 +34,7 @@ public final class ELKUtils {
 	 *
 	 */
 	public static void sendDetailsToELK(String testName, String testStatus) {
-		if (PropertyUtils.get(ConfigProperties.USEELK).equalsIgnoreCase(FrameworkConstants.getYes())) {
+		if (PropertyUtils.get(ConfigMap.USEELK).equalsIgnoreCase(GlobalVars.getYes())) {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("TestName", testName);
 			map.put("Status", testStatus);
@@ -46,7 +43,7 @@ public final class ELKUtils {
 			given().header("Content-Type", "application/json")
 					.when()
 					.body(map)
-					.post(PropertyUtils.get(ConfigProperties.ELKSUITEURL));
+					.post(PropertyUtils.get(ConfigMap.ELKSUITEURL));
 			
 		}
 	}

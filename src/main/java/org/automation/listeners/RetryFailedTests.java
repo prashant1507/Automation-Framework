@@ -1,7 +1,7 @@
 package org.automation.listeners;
 
-import org.automation.constants.FrameworkConstants;
-import org.automation.enums.ConfigProperties;
+import org.automation.constants.GlobalVars;
+import org.automation.enums.ConfigMap;
 import org.automation.utils.PropertyUtils;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
@@ -20,12 +20,12 @@ import org.testng.ITestResult;
 public class RetryFailedTests implements IRetryAnalyzer {
 
 	private int count = 0;
-	private int retries = FrameworkConstants.getMaxRetryCounter();
+	private final int retries = GlobalVars.getMaxRetryCounter();
 
 	@Override
 	public boolean retry(ITestResult result) {
 		boolean value = false;
-		if (PropertyUtils.get(ConfigProperties.RETRYFAILEDTESTCASES).equalsIgnoreCase(FrameworkConstants.getYes())) {
+		if (PropertyUtils.get(ConfigMap.RETRYFAILEDTESTCASES).equalsIgnoreCase(GlobalVars.getYes())) {
 			value = count < retries;
 			count++;
 		}

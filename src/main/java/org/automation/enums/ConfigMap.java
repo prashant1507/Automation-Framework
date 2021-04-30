@@ -11,7 +11,7 @@ package org.automation.enums;
  * @version 1.0
  *
  */
-public enum ConfigProperties {
+public enum ConfigMap {
 
 	URLFORENV,
 	TESTERNAME,

@@ -7,8 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
-import org.automation.constants.FrameworkConstants;
-import org.automation.enums.ConfigProperties;
+import org.automation.constants.GlobalVars;
+import org.automation.enums.ConfigMap;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * Reading property from properties file.
@@ -21,23 +24,15 @@ import org.automation.enums.ConfigProperties;
  * @version 1.0
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class PropertyUtils {
-
-	/**
-	 * 
-	 * Private constructor to avoid external instantiation
-	 * <br>
-	 * Apr 8, 2021
-	 */
-	private PropertyUtils() {
-	}
 
 	private static Properties property = new Properties();
 	private static final Map<String, String> CONFIGMAP = new HashMap<String, String>();
 
 	static {
 		try {
-			FileInputStream fis = new FileInputStream(FrameworkConstants.getFrameworkConfigPathFromPropertiesFile());
+			FileInputStream fis = new FileInputStream(GlobalVars.getConfigProp());
 			property.load(fis);
 			for (Map.Entry<Object, Object> entry : property.entrySet()) {
 				CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()).trim());
@@ -50,7 +45,7 @@ public final class PropertyUtils {
 
 	}
 	
-	public static String get(ConfigProperties key) {
+	public static String get(ConfigMap key) {
 		if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name().toLowerCase()))) {
 			try {
 				throw new Exception("Property name '" + key.toString().toLowerCase() + "' not found. Please check FrameworkConfig.properties");

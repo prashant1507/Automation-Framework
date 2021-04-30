@@ -2,6 +2,9 @@ package org.automation.factories;
 
 import org.automation.driver.DriverManager;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * 
  * This class manages all the browser related alerts.
@@ -13,16 +16,8 @@ import org.automation.driver.DriverManager;
  * @version 1.0
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class BrowserAlertFactory {
-	
-	/**
-	 * 
-	 * Private constructor to avoid external instantiation
-	 * <br>
-	 * Apr 8, 2021
-	 */
-	private BrowserAlertFactory() {
-	}
 
 	public static void dismissAert() {
 		DriverManager.getDriver().switchTo().alert().dismiss();

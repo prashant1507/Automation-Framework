@@ -7,8 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
-import org.automation.constants.FrameworkConstants;
-import org.automation.enums.ConfigProperties;
+import org.automation.constants.GlobalVars;
+import org.automation.enums.ConfigMap;
 import org.automation.utils.PropertyUtils;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,6 +16,8 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * 
@@ -28,16 +30,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
  * @version 1.0
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Driver {
-
-	/**
-	 * 
-	 * Private constructor to avoid external instantiation <br>
-	 * Apr 8, 2021
-	 */
-	private Driver() {
-	}
-
+	
 	/**
 	 * Setup the web driver for browser <br>
 	 * Apr 8, 2021
@@ -48,14 +43,14 @@ public final class Driver {
 	public static void initDriver(String browser) {
 
 		if (Objects.isNull(DriverManager.getDriver())) {
-			if (browser.equalsIgnoreCase(FrameworkConstants.getChrome())) {
+			if (browser.equalsIgnoreCase(GlobalVars.getChrome())) {
 				setChromeDriver();
-			} else if (browser.equalsIgnoreCase(FrameworkConstants.getFirefox())) {
+			} else if (browser.equalsIgnoreCase(GlobalVars.getFirefox())) {
 				setFirefoxDriver();
 			}
 			DriverManager.getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			DriverManager.getDriver().manage().window().maximize();
-			DriverManager.getDriver().get(PropertyUtils.get(ConfigProperties.URLFORENV));
+			DriverManager.getDriver().get(PropertyUtils.get(ConfigMap.URLFORENV));
 		}
 	}
 
@@ -80,24 +75,24 @@ public final class Driver {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		cap.setBrowserName(BrowserType.FIREFOX);
 		try {
-			if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getGrid())) {
+			if (PropertyUtils.get(ConfigMap.RUNMODE).equalsIgnoreCase(GlobalVars.getGrid())) {
 				DriverManager
-						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.REMOTEURL)), cap));
-			} else if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getLocal())) {
-				if (PropertyUtils.get(ConfigProperties.DOWNLOADWEBDRIVER)
-						.equalsIgnoreCase(FrameworkConstants.getYes())) {
+						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigMap.REMOTEURL)), cap));
+			} else if (PropertyUtils.get(ConfigMap.RUNMODE).equalsIgnoreCase(GlobalVars.getLocal())) {
+				if (PropertyUtils.get(ConfigMap.DOWNLOADWEBDRIVER)
+						.equalsIgnoreCase(GlobalVars.getYes())) {
 					WebDriverManager.firefoxdriver().setup();
 				} else {
-					System.setProperty(FrameworkConstants.getFirefoxDriver(), setFirefoxDriverPath());
+					System.setProperty(GlobalVars.getFirefoxDriver(), setFirefoxDriverPath());
 				}
 				DriverManager.setDriver(new FirefoxDriver());
-			} else if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getSelenoid())) {
+			} else if (PropertyUtils.get(ConfigMap.RUNMODE).equalsIgnoreCase(GlobalVars.getSelenoid())) {
 				cap.setCapability("enableVNC", true);
 				cap.setCapability("enableVideo", true);
 				cap.setCapability("videoName",
-						"Test_" + (new SimpleDateFormat(FrameworkConstants.getDateTimeFormat1()).format(new Date())));
+						"Test_" + (new SimpleDateFormat(GlobalVars.getDateTimeFormat1()).format(new Date())));
 				DriverManager
-						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.REMOTEURL)), cap));
+						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigMap.REMOTEURL)), cap));
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -113,24 +108,24 @@ public final class Driver {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		cap.setBrowserName(BrowserType.CHROME);
 		try {
-			if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getGrid())) {
+			if (PropertyUtils.get(ConfigMap.RUNMODE).equalsIgnoreCase(GlobalVars.getGrid())) {
 				DriverManager
-						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.REMOTEURL)), cap));
-			} else if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getLocal())) {
-				if (PropertyUtils.get(ConfigProperties.DOWNLOADWEBDRIVER)
-						.equalsIgnoreCase(FrameworkConstants.getYes())) {
+						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigMap.REMOTEURL)), cap));
+			} else if (PropertyUtils.get(ConfigMap.RUNMODE).equalsIgnoreCase(GlobalVars.getLocal())) {
+				if (PropertyUtils.get(ConfigMap.DOWNLOADWEBDRIVER)
+						.equalsIgnoreCase(GlobalVars.getYes())) {
 					WebDriverManager.chromedriver().setup();
 				} else {
-					System.setProperty(FrameworkConstants.getChromeDriver(), setChromeDriverPath());
+					System.setProperty(GlobalVars.getChromeDriver(), setChromeDriverPath());
 				}
 				DriverManager.setDriver(new ChromeDriver());
-			} else if (PropertyUtils.get(ConfigProperties.RUNMODE).equalsIgnoreCase(FrameworkConstants.getSelenoid())) {
+			} else if (PropertyUtils.get(ConfigMap.RUNMODE).equalsIgnoreCase(GlobalVars.getSelenoid())) {
 				cap.setCapability("enableVNC", true);
 				cap.setCapability("enableVideo", true);
 				cap.setCapability("videoName",
-						"Test_" + (new SimpleDateFormat(FrameworkConstants.getDateTimeFormat1()).format(new Date())));
+						"Test_" + (new SimpleDateFormat(GlobalVars.getDateTimeFormat1()).format(new Date())));
 				DriverManager
-						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.REMOTEURL)), cap));
+						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigMap.REMOTEURL)), cap));
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -145,22 +140,22 @@ public final class Driver {
 	 *
 	 */
 	private static String setChromeDriverPath() {
-		String os = FrameworkConstants.getOsPlatform();
-		String chromeDriverPath = "";
+		String os = GlobalVars.getOsPlatform(); 
+		String driver = "";
 		try {
-			if (os.startsWith(FrameworkConstants.getWindows())) {
-				chromeDriverPath = FrameworkConstants.getChromeDriverWinPath();
-			} else if (os.startsWith(FrameworkConstants.getMacos())) {
-				chromeDriverPath = FrameworkConstants.getChromeDriverMacosPath();
-				Runtime.getRuntime().exec(FrameworkConstants.getExecutePermission() + chromeDriverPath);
+			if (os.startsWith(GlobalVars.getWin())) {
+				driver = GlobalVars.getWinChromeDriverPath();
+			} else if (os.startsWith(GlobalVars.getMacOs())) {
+				driver = GlobalVars.getMacChromeDriverPath();
+				Runtime.getRuntime().exec(GlobalVars.getExecutePermission() + driver);
 			} else if (true) {
-				chromeDriverPath = FrameworkConstants.getChromeDriverLinuxPath();
-				Runtime.getRuntime().exec(FrameworkConstants.getExecutePermission() + chromeDriverPath);
+				driver = GlobalVars.getLinuxChromeDriverPath();
+				Runtime.getRuntime().exec(GlobalVars.getExecutePermission() + driver);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return chromeDriverPath;
+		return driver;
 	}
 
 	/**
@@ -171,21 +166,21 @@ public final class Driver {
 	 *
 	 */
 	private static String setFirefoxDriverPath() {
-		String os = FrameworkConstants.getOsPlatform();
-		String firefoxDriverPath = "";
+		String os = GlobalVars.getOsPlatform();
+		String driver = "";
 		try {
-			if (os.startsWith(FrameworkConstants.getWindows())) {
-				firefoxDriverPath = FrameworkConstants.getFirefoxDriverWinPath();
-			} else if (os.startsWith(FrameworkConstants.getMacos())) {
-				firefoxDriverPath = FrameworkConstants.getFirefoxDriverMacosPath();
-				Runtime.getRuntime().exec(FrameworkConstants.getExecutePermission() + firefoxDriverPath);
+			if (os.startsWith(GlobalVars.getWin())) {
+				driver = GlobalVars.getWinFirefoxDriverPath();
+			} else if (os.startsWith(GlobalVars.getMacOs())) {
+				driver = GlobalVars.getMacosFirefoxDriverPath();
+				Runtime.getRuntime().exec(GlobalVars.getExecutePermission() + driver);
 			} else if (true) {
-				firefoxDriverPath = FrameworkConstants.getFirefoxDriverLinuxPath();
-				Runtime.getRuntime().exec(FrameworkConstants.getExecutePermission() + firefoxDriverPath);
+				driver = GlobalVars.getLinuxFirefoxDriverPath();
+				Runtime.getRuntime().exec(GlobalVars.getExecutePermission() + driver);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return firefoxDriverPath;
+		return driver;
 	}
 }

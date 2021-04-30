@@ -7,9 +7,12 @@ import java.io.IOException;
 //import java.util.Comparator;
 import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
-import org.automation.media.ScreenshotPath;
-import org.automation.media.VideoPath;
+import org.automation.setpath.ScreenshotPath;
+import org.automation.setpath.VideoPath;
 import org.jcodec.api.awt.AWTSequenceEncoder;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * This class will create video using images taken during the test
@@ -22,13 +25,8 @@ import org.jcodec.api.awt.AWTSequenceEncoder;
  * @version 1.0
  * 
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class TestRecording {
-	/**
-	 * Private constructor to avoid external instantiation <br>
-	 * Apr 26, 2021
-	 */
-	private TestRecording() {
-	}
 
 	/**
 	 * This method creates a video from collection of images <br>

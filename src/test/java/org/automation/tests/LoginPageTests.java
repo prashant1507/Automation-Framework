@@ -10,9 +10,6 @@ import org.testng.annotations.Test;
 
 public final class LoginPageTests extends BaseSetup {
 
-	private LoginPageTests() {
-	}
-
 	@Test(testName = "Login page verification", description = "Verify if login page is displayed", retryAnalyzer = RetryFailedTests.class)
 	public void verifyLoginPage() {
 		LoginPage loginPage = new LoginPage();

@@ -4,10 +4,10 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
-import org.automation.constants.FrameworkConstants;
-import org.automation.enums.ConfigProperties;
+import org.automation.constants.GlobalVars;
+import org.automation.enums.ConfigMap;
+import org.automation.setpath.ReportPath;
 import org.automation.utils.PropertyUtils;
-import org.automation.utils.SetPath;
 
 import com.aventstack.extentreports.AnalysisStrategy;
 import com.aventstack.extentreports.ExtentReports;
@@ -50,30 +50,30 @@ public final class ExtentReport {
 	public static void initReports() {
 		if (Objects.isNull(extentReports)) {
 			// Setting the view order for the tabs in report
-			ExtentSparkReporter spark = new ExtentSparkReporter(SetPath.getReportPath()).viewConfigurer()
+			ExtentSparkReporter spark = new ExtentSparkReporter(ReportPath.getReportPath()).viewConfigurer()
 					.viewOrder().as(new ViewName[] { ViewName.DASHBOARD, ViewName.TEST, ViewName.CATEGORY,
 							ViewName.DEVICE, ViewName.AUTHOR })
 					.apply();
 
 			extentReports = new ExtentReports();
 			spark.config().setTheme(Theme.DARK);
-			spark.config().setDocumentTitle(FrameworkConstants.getReportTitle());
-			spark.config().setReportName(FrameworkConstants.getReportName());
-			spark.config().setEncoding(FrameworkConstants.getUtf8Encoding());
-			spark.config().setTimeStampFormat(FrameworkConstants.getDateTimeFormat2());
+			spark.config().setDocumentTitle(GlobalVars.getReportTitle());
+			spark.config().setReportName(GlobalVars.getReportName());
+			spark.config().setEncoding(GlobalVars.getUtf8());
+			spark.config().setTimeStampFormat(GlobalVars.getDateTimeFormat2());
 			spark.config().setOfflineMode(true);
 
 			// Setting up information
 			try {
-				extentReports.setSystemInfo("Name", PropertyUtils.get(ConfigProperties.TESTERNAME));
-				extentReports.setSystemInfo("Environment", PropertyUtils.get(ConfigProperties.ENVIRONMENT));
-				extentReports.setSystemInfo("URL", PropertyUtils.get(ConfigProperties.URLFORENV));
-				extentReports.setSystemInfo("OS Platform", FrameworkConstants.getOsPlatform());
-				extentReports.setSystemInfo("OS Version", FrameworkConstants.getOsVersion());
-				extentReports.setSystemInfo("OS Architecture", FrameworkConstants.getOsArch());
-				extentReports.setSystemInfo("Report Path", SetPath.getReportPath());
+				extentReports.setSystemInfo("Name", PropertyUtils.get(ConfigMap.TESTERNAME));
+				extentReports.setSystemInfo("Environment", PropertyUtils.get(ConfigMap.ENVIRONMENT));
+				extentReports.setSystemInfo("URL", PropertyUtils.get(ConfigMap.URLFORENV));
+				extentReports.setSystemInfo("OS Platform", GlobalVars.getOsPlatform());
+				extentReports.setSystemInfo("OS Version", GlobalVars.getOsVersion());
+				extentReports.setSystemInfo("OS Architecture", GlobalVars.getOsArch());
+				extentReports.setSystemInfo("Report Path", ReportPath.getReportPath());
 				extentReports.setAnalysisStrategy(AnalysisStrategy.TEST);
-				if (PropertyUtils.get(ConfigProperties.OVERRIDEREPORTS).equalsIgnoreCase(FrameworkConstants.getYes())) {
+				if (PropertyUtils.get(ConfigMap.OVERRIDEREPORTS).equalsIgnoreCase(GlobalVars.getYes())) {
 					JsonFormatter json = new JsonFormatter("old-report-data.json");
 					extentReports.createDomainFromJsonArchive("old-report-data.json");
 					extentReports.attachReporter(json, spark);
@@ -97,7 +97,7 @@ public final class ExtentReport {
 			try {
 				ExtentManager.unload();
 				// To open the report automatically in default browser
-				Desktop.getDesktop().browse(new File(SetPath.getReportPath()).toURI());
+				Desktop.getDesktop().browse(new File(ReportPath.getReportPath()).toURI());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -114,9 +114,9 @@ public final class ExtentReport {
 	public static void createTests(String testCaseName) {
 		ExtentTest extentTest = null;
 		try {
-			extentTest = extentReports.createTest(testCaseName).assignDevice(FrameworkConstants.getOsPlatform())
-					.assignAuthor(PropertyUtils.get(ConfigProperties.TESTERNAME))
-					.assignCategory(PropertyUtils.get(ConfigProperties.ENVIRONMENT));
+			extentTest = extentReports.createTest(testCaseName).assignDevice(GlobalVars.getOsPlatform())
+					.assignAuthor(PropertyUtils.get(ConfigMap.TESTERNAME))
+					.assignCategory(PropertyUtils.get(ConfigMap.ENVIRONMENT));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

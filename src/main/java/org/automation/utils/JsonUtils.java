@@ -6,11 +6,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import org.automation.constants.FrameworkConstants;
-import org.automation.enums.ConfigProperties;
+import org.automation.constants.GlobalVars;
+import org.automation.enums.ConfigMap;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * Reading property from JSON file.
@@ -23,23 +26,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @version 1.0
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @SuppressWarnings("unchecked")
 public final class JsonUtils {
-
-	/**
-	 * 
-	 * Private constructor to avoid external instantiation
-	 * <br>
-	 * Apr 8, 2021
-	 */
-	private JsonUtils() {
-	}
 
 	private static Map<String, String> CONFIGMAP;
 
 	static {
 		try {
-			CONFIGMAP = new ObjectMapper().readValue(new File(FrameworkConstants.getFrameworkConfigPathFromJsonFile()),
+			CONFIGMAP = new ObjectMapper().readValue(new File(GlobalVars.getConfigJson()),
 					HashMap.class);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -52,7 +47,7 @@ public final class JsonUtils {
 		}
 	}
 
-	public static String get(ConfigProperties key) throws Exception {
+	public static String get(ConfigMap key) throws Exception {
 		if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name().toLowerCase()))) {
 			throw new Exception("Property name '" + key + "' not found. Please check FrameworkConfig.json");
 		}

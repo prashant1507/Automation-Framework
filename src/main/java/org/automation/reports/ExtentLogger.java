@@ -1,10 +1,13 @@
 package org.automation.reports;
 
-import org.automation.constants.FrameworkConstants;
-import org.automation.enums.ConfigProperties;
+import org.automation.constants.GlobalVars;
+import org.automation.enums.ConfigMap;
 import org.automation.utils.PropertyUtils;
 import org.automation.utils.ScreenshotUtils;
 import com.aventstack.extentreports.MediaEntityBuilder;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * This class adds the status of test step. <br>
@@ -19,13 +22,11 @@ import com.aventstack.extentreports.MediaEntityBuilder;
  * @version 1.0
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ExtentLogger {
 
-	private ExtentLogger() {
-	}
-
 	public static void pass(String msg) {
-		if (PropertyUtils.get(ConfigProperties.PASSEDSCREENSHOT).equalsIgnoreCase(FrameworkConstants.getYes()))
+		if (PropertyUtils.get(ConfigMap.PASSEDSCREENSHOT).equalsIgnoreCase(GlobalVars.getYes()))
 			ExtentManager.getExtentTest().pass(msg,
 					MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
 		else

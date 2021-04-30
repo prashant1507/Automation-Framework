@@ -4,6 +4,9 @@ import java.util.Set;
 
 import org.automation.driver.DriverManager;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * 
  * Manages web page related operations.
@@ -15,16 +18,8 @@ import org.automation.driver.DriverManager;
  * @version 1.0
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class BrowserOperationFactory {
-
-	/**
-	 * 
-	 * Private constructor to avoid external instantiation
-	 * <br>
-	 * Apr 8, 2021
-	 */
-	private BrowserOperationFactory() {
-	}
 
 	public static String getTitle() {
 		return DriverManager.getDriver().getTitle();

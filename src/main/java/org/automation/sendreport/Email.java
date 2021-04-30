@@ -16,10 +16,12 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import org.automation.constants.FrameworkConstants;
-import org.automation.enums.ConfigProperties;
+import org.automation.constants.GlobalVars;
+import org.automation.enums.ConfigMap;
+import org.automation.setpath.ReportPath;
 import org.automation.utils.PropertyUtils;
-import org.automation.utils.SetPath;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * Email class is responsible for setting up the mail server. Its also responsible for sending the generated Test Report via email.
@@ -30,6 +32,7 @@ import org.automation.utils.SetPath;
  * 
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Email {
 	static String encodedPassword;
 	static String receiversEmailID;
@@ -38,24 +41,18 @@ public final class Email {
 	static String reportName;
 
 	static {
-		encodedPassword = PropertyUtils.get(ConfigProperties.EMAILPASSWORD);
-		receiversEmailID = PropertyUtils.get(ConfigProperties.RECEIVERSID);
-		emailId = PropertyUtils.get(ConfigProperties.SENDERSID);
-		report = SetPath.getReportPath();
+		encodedPassword = PropertyUtils.get(ConfigMap.EMAILPASSWORD);
+		receiversEmailID = PropertyUtils.get(ConfigMap.RECEIVERSID);
+		emailId = PropertyUtils.get(ConfigMap.SENDERSID);
+		report = ReportPath.getReportPath();
 		reportName = report.split("/")[report.split("/").length - 1];
 
 	}
 
-	/**
-	 * Private constructor to avoid external instantiation
-	 */
-	private Email() {
-	}
-
 	public static void sendMail() {
 		try {
-			if (PropertyUtils.get(ConfigProperties.SENDMAILAFTEREXECUTION)
-					.equalsIgnoreCase(FrameworkConstants.getYes())) {
+			if (PropertyUtils.get(ConfigMap.SENDMAILAFTEREXECUTION)
+					.equalsIgnoreCase(GlobalVars.getYes())) {
 
 				Properties props = System.getProperties();
 				props.put("mail.smtp.auth", "true");
@@ -63,10 +60,10 @@ public final class Email {
 				props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 				props.put("mail.smtp.ssl.checkserveridentity", true);
 
-				if (PropertyUtils.get(ConfigProperties.SENDMAILUSING).equalsIgnoreCase("Gmail")) {
+				if (PropertyUtils.get(ConfigMap.SENDMAILUSING).equalsIgnoreCase("Gmail")) {
 					props.put("mail.smtp.host", "smtp.gmail.com");
 					props.put("mail.smtp.port", "465");
-				} else if (PropertyUtils.get(ConfigProperties.SENDMAILUSING).equalsIgnoreCase("Outlook")) {
+				} else if (PropertyUtils.get(ConfigMap.SENDMAILUSING).equalsIgnoreCase("Outlook")) {
 					props.put("mail.smtp.host", "smtp.live.com");
 					props.put("mail.smtp.port", "587");
 				}
@@ -90,8 +87,8 @@ public final class Email {
 
 				BodyPart body = new MimeBodyPart();
 				body.setText("Hi,\nPlease find attached QA test report for "
-						+ PropertyUtils.get(ConfigProperties.ENVIRONMENT) + ".\nThanks & regards\n"
-						+ PropertyUtils.get(ConfigProperties.TESTERNAME));
+						+ PropertyUtils.get(ConfigMap.ENVIRONMENT) + ".\nThanks & regards\n"
+						+ PropertyUtils.get(ConfigMap.TESTERNAME));
 				MimeBodyPart mimeBodyPart = new MimeBodyPart();
 				DataSource source = new FileDataSource(report);
 				mimeBodyPart.setDataHandler(new DataHandler(source));

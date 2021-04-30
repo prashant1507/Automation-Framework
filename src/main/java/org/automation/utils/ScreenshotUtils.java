@@ -7,12 +7,15 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.imageio.ImageIO;
-import org.automation.constants.FrameworkConstants;
+import org.automation.constants.GlobalVars;
 import org.automation.driver.DriverManager;
-import org.automation.media.ScreenshotPath;
+import org.automation.setpath.ScreenshotPath;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * This class is to take screenshot for each test steps
@@ -24,20 +27,13 @@ import org.openqa.selenium.WebDriverException;
  * @version 1.0
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ScreenshotUtils {
-	/**
-	 * Private constructor to avoid external instantiation
-	 * <br>
-	 * Apr 26, 2021
-	 */
-	private ScreenshotUtils() {
-	}
 	
 	/**
 	 * This function will return image as Base64 and will save image as png for creating video.
 	 * <br>
 	 * Apr 26, 2021
-	 * @param
 	 *
 	 */
 	public static String getBase64Image() {
@@ -53,7 +49,7 @@ public final class ScreenshotUtils {
 	 *
 	 */
 	static void getImageAsFile(String dir) {
-		String screenShotName = dir + "/screenshot_" + new SimpleDateFormat(FrameworkConstants.getDateTimeFormat1()).format(new Date()) + ".png";
+		String screenShotName = dir + "/screenshot_" + new SimpleDateFormat(GlobalVars.getDateTimeFormat1()).format(new Date()) + ".png";
 		File ts = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
 		try {
 			// Setting image dimension as an even value 888 x 1920 (w x h)

@@ -7,6 +7,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * This class has methods to do various operations with webelements.
  * 
@@ -18,14 +21,11 @@ import org.openqa.selenium.support.ui.Select;
  * @version 1.0
  *
  */
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BasePage {
-
-	protected BasePage() {
-	}
 	
 	private Select getSelectWebElement(By by) {
-		Select select = new Select(DriverManager.getDriver().findElement(by));
-		return select;
+		return new Select(DriverManager.getDriver().findElement(by));
 	}
 	
 	protected void wait(By by, int milliSeconds) {

@@ -2,17 +2,16 @@ package org.automation.listeners;
 
 import java.util.Arrays;
 import java.util.Base64;
-import org.automation.constants.FrameworkConstants;
+import org.automation.constants.GlobalVars;
 import org.automation.elk.ELKUtils;
-import org.automation.enums.ConfigProperties;
+import org.automation.enums.ConfigMap;
 import org.automation.reports.ExtentLogger;
 import org.automation.reports.ExtentManager;
 import org.automation.reports.ExtentReport;
 import org.automation.testrecorder.TestRecording;
 import org.automation.utils.BrowserDetails;
-import org.automation.utils.DirectoryCreator;
 import org.automation.utils.PropertyUtils;
-import org.automation.utils.DeleteFileAndFolders;
+import org.automation.utils.FileSystemHandler;
 import org.automation.utils.UserInputCheck;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
@@ -42,16 +41,16 @@ public class Listener implements ITestListener, ISuiteListener {
 	 */
 	public void onStart(ISuite suite) {
 		try {
-			if (PropertyUtils.get(ConfigProperties.SENDMAILAFTEREXECUTION)
-					.equalsIgnoreCase(FrameworkConstants.getYes())) {
-				Base64.getDecoder().decode(PropertyUtils.get(ConfigProperties.EMAILPASSWORD));
+			if (PropertyUtils.get(ConfigMap.SENDMAILAFTEREXECUTION)
+					.equalsIgnoreCase(GlobalVars.getYes())) {
+				Base64.getDecoder().decode(PropertyUtils.get(ConfigMap.EMAILPASSWORD));
 			}
 		} catch (Exception e) {
 			UserInputCheck.designerOutputForPasswordError();
 			System.exit(0);
 		}
-		DeleteFileAndFolders.deleteOldReports();
-		DeleteFileAndFolders.cleanScreenshotsDir();
+		FileSystemHandler.deleteOldReports();
+		FileSystemHandler.deleteDir(GlobalVars.getScreenshotDir());
 		ExtentReport.initReports();
 	}
 
@@ -62,7 +61,7 @@ public class Listener implements ITestListener, ISuiteListener {
 
 	public void onTestStart(ITestResult result) {
 		ExtentReport.createTests(result.getMethod().getDescription());
-		DirectoryCreator.createRequiredDirs();
+		FileSystemHandler.createRequiredDirs();
 	}
 
 	public void onTestSuccess(ITestResult result) {

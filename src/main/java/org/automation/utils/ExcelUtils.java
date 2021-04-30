@@ -11,6 +11,9 @@ import org.apache.commons.collections4.map.HashedMap;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * 
  * Utility class to read from excel file. This class store a map of rows and
@@ -26,14 +29,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @version 1.0
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ExcelUtils {
-	/**
-	 * Private constructor to avoid external instantiation
-	 * <br>
-	 * Apr 7, 2021
-	 */
-	private ExcelUtils() {
-	}
 
 	/**
 	 * To read data from excel file

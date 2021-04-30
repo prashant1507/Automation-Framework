@@ -1,6 +1,9 @@
 package org.automation.utils;
 import org.automation.sendreport.Email;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * 
  * Handles different user input validations. Class is final to avoid extend.
@@ -11,15 +14,8 @@ import org.automation.sendreport.Email;
  *
  */
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class UserInputCheck {
-	/**
-	 * 
-	 * Private constructor to avoid external instantiation
-	 * <br>
-	 * Apr 7, 2021
-	 */
-	private UserInputCheck() {
-	}
 
 	/**
 	 * Calls the sendMail method of Email.class for sending the generated report.

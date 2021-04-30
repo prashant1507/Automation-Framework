@@ -4,6 +4,9 @@ import java.util.Objects;
 
 import com.aventstack.extentreports.ExtentTest;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * To set, get and remove ExtentTest and manage Thread safety.
  * 
@@ -15,16 +18,8 @@ import com.aventstack.extentreports.ExtentTest;
  * @version 1.0
  *
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ExtentManager {
-	
-	/**
-	 * 
-	 * Private constructor to avoid external instantiation.
-	 * <br>
-	 * Apr 8, 2021
-	 */
-	private ExtentManager() {
-	}
 
 	private static ThreadLocal<ExtentTest> et = new ThreadLocal<ExtentTest>();
 

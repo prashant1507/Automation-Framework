@@ -4,6 +4,9 @@ import org.automation.driver.DriverManager;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * This class returns the browser name and version
  * <br>
@@ -14,9 +17,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
  * @version 1.0
  * 
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class BrowserDetails {
-	private BrowserDetails() {
-	}
 	
 	public static String browserName() {
 		Capabilities cap = ((RemoteWebDriver) DriverManager.getDriver()).getCapabilities();

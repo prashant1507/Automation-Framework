@@ -54,11 +54,11 @@ Below are the component details of the framework:
         -   `testng.xml`<br/>
         -   `Jenkins`<br/>
     -   Tests can be executed using:<br/>
-        -   `local browsers`<br/>
-        -   `remote browsers`<br/>
-            -   docker selenium grid<br/>
-            -   selenium grid<br/>
-            -   selenoid<br/>
+        - local browsers <br/>
+        - remote browsers <br/>
+        -	docker selenium grid<br/>
+        -	selenium grid<br/>
+        -	selenoid<br/>
 
     <b>Note:</b> Will add support to run using Jenkins.
 
@@ -127,7 +127,6 @@ Below are the component details of the framework:
 -   Docker Selenium Grid: SetupReadMe\Docker-Grid.md<br/>
 
 <h3>Notes:</h3>
--   For Jenkins to support extent reporting (or other CSS, etc. components ) run below in scripts `jenkisURL/script`<br/>
-    ```
-    System.setProperty("hudson.model.DirectoryBrowserSupport.CSP","")
-    ``` 
+1.	For Jenkins to support extent reporting (or other CSS, etc. components ) run below in scripts `jenkisURL/script`<br/>
+	-	System.setProperty("hudson.model.DirectoryBrowserSupport.CSP","")<br/>	
+2. Project required lombok setup.

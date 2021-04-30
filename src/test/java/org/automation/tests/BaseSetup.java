@@ -1,24 +1,25 @@
 package org.automation.tests;
 
-import org.automation.constants.FrameworkConstants;
+import org.automation.constants.GlobalVars;
 import org.automation.driver.Driver;
-import org.automation.media.ScreenshotPath;
-import org.automation.media.VideoPath;
+import org.automation.setpath.ScreenshotPath;
+import org.automation.setpath.VideoPath;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /*
  * Before and After methods
  */
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BaseSetup {
-
-	protected BaseSetup() {
-	}
 
 	@BeforeMethod
 	protected void setUp(ITestContext context) {
-		String browser = context.getCurrentXmlTest().getParameter(FrameworkConstants.getBrowser());
+		String browser = context.getCurrentXmlTest().getParameter(GlobalVars.getBrowser());
 		try {
 			Driver.initDriver(browser);
 			ScreenshotPath.setCurrentTestExecutionScreenshotsDir();

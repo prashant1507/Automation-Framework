@@ -1,5 +1,5 @@
 #!/bin/bash
-PROPERTIESFILEPATH="src/test/resources/Jenkins/FrameworkJenkins.properties"
+PROPERTIESFILEPATH="src/test/resources/Jenkins/Config.properties"
 
 if [[ $Url ]]; then
     sed -i'' -e "s,urlforenv=,urlforenv=$Url,g" $PROPERTIESFILEPATH

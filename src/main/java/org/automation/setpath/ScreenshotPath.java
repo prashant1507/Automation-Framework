@@ -1,10 +1,13 @@
-package org.automation.media;
+package org.automation.setpath;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.automation.constants.FrameworkConstants;
+import org.automation.constants.GlobalVars;
 import org.automation.utils.BrowserDetails;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * This class is to set and get screenshot folder path <br>
@@ -16,14 +19,8 @@ import org.automation.utils.BrowserDetails;
  * @version 1.0
  * 
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ScreenshotPath {
-
-	/**
-	 * Private constructor to avoid external instantiation <br>
-	 * Apr 26, 2021
-	 */
-	private ScreenshotPath() {
-	}
 
 	private static ThreadLocal<String> dir = new ThreadLocal<String>();
 
@@ -51,7 +48,7 @@ public final class ScreenshotPath {
 	 *
 	 */
 	public static void setCurrentTestExecutionScreenshotsDir() {
-		dir.set(FrameworkConstants.getScreenshotsDir() + BrowserDetails.browserName() + "_"
-				+ new SimpleDateFormat(FrameworkConstants.getDateTimeFormat1()).format(new Date()));
+		dir.set(GlobalVars.getScreenshotDir() + BrowserDetails.browserName() + "_"
+				+ new SimpleDateFormat(GlobalVars.getDateTimeFormat1()).format(new Date()));
 	}
 }
