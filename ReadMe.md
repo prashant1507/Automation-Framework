@@ -34,7 +34,7 @@ Below are the component details of the framework:
     -  JSON File
 
 -   #### Test Scripts
-    [TestNg](https://mvnrepository.com/artifact/org.testng/testng/) is used as a unit test framework in order to generate test script taking into account   the `Page Object Model` design pattern.
+    [TestNg](https://mvnrepository.com/artifact/org.testng/testng/) is used as a test framework in order to generate test script taking into account   the `Page Object Model` design pattern.
 
 -   #### Build Tool
     Using `maven`, project dependencies are managed. Test can be run using `pom.xml` and `testng.xml`.

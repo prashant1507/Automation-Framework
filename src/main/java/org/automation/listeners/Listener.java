@@ -62,6 +62,7 @@ public class Listener implements ITestListener, ISuiteListener {
 	public void onTestStart(ITestResult result) {
 		ExtentReport.createTests(result.getMethod().getDescription());
 		FileSystemHandler.createRequiredDirs();
+		ExtentLogger.info(PropertyUtils.get(ConfigMap.URLFORENV));
 	}
 
 	public void onTestSuccess(ITestResult result) {
