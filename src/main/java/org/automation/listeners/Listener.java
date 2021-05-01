@@ -62,11 +62,11 @@ public class Listener implements ITestListener, ISuiteListener {
 	public void onTestStart(ITestResult result) {
 		ExtentReport.createTests(result.getMethod().getDescription());
 		FileSystemHandler.createRequiredDirs();
+		ExtentManager.getExtentTest().assignCategory(BrowserDetails.browserDeatils());
 		ExtentLogger.info(PropertyUtils.get(ConfigMap.URLFORENV));
 	}
 
 	public void onTestSuccess(ITestResult result) {
-		ExtentManager.getExtentTest().assignCategory(BrowserDetails.browserDeatils());
 		ExtentLogger.pass("Testcase: "
 				+ (result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Test.class).testName())
 				+ "<br/>" + (result.getClass()).toString().replace("class", "Class: ") + "<br/>" + "Method: "
@@ -80,7 +80,6 @@ public class Listener implements ITestListener, ISuiteListener {
 	 * Apr 8, 2021
 	 */
 	public void onTestFailure(ITestResult result) {
-		ExtentManager.getExtentTest().assignCategory(BrowserDetails.browserDeatils());
 		ExtentLogger.fail(result.getThrowable().toString() + "<br/><br/>"
 				+ Arrays.toString(result.getThrowable().getStackTrace()));
 		ExtentLogger.fail("Testcase: "
@@ -95,7 +94,6 @@ public class Listener implements ITestListener, ISuiteListener {
 	}
 
 	public void onTestSkipped(ITestResult result) {
-		ExtentManager.getExtentTest().assignCategory(BrowserDetails.browserDeatils());
 		ExtentLogger.skip("Testcase: "
 				+ (result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Test.class).testName())
 				+ "<br/>" + (result.getClass()).toString().replace("class", "Class: ") + "<br/>" + "Method: "
