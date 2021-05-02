@@ -31,11 +31,8 @@ public class BaseSetup {
 
 	@AfterMethod
 	protected void tearDown() {
-		try {
-		} finally {
-			Driver.quiteDriver();
-			ScreenshotPath.unloadDir();
-			VideoPath.flushVideoPath();
-		}
+		Driver.quiteDriver();
+		ScreenshotPath.unloadDir();
+		VideoPath.flushVideoPath();
 	}
 }

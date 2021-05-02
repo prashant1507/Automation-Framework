@@ -19,7 +19,7 @@ public final class HomePageTests extends BaseSetup {
 	@Test(testName = "Login page verification fail test", description = "Verify if login page is displayed fail", retryAnalyzer = RetryFailedTests.class)
 	public void verifyLoginPage() {
 		LoginPage loginPage = new LoginPage();
-		Assert.assertEquals(loginPage.isForgotPasswordLinkDisplayed(), false, "Forgot Password link is not displayed.");
+		Assert.assertFalse(loginPage.isForgotPasswordLinkDisplayed(), "Forgot Password link is not displayed.");
 	}
 	
 	@Test(testName = "Skip test name homepage", description = "Skip test case homepage")
@@ -35,7 +35,7 @@ public final class HomePageTests extends BaseSetup {
 		loginPage.enterPassword(password);
 		// Using explicit wait in clickLoginBtn method
 		loginPage.clickLoginBtn();
-		Assert.assertEquals(homePage.getWelcomeText("Welcome"), false, "Failed to login.");
+		Assert.assertFalse(homePage.getWelcomeText("Welcome"), "Failed to login.");
 	}
 
 	@Test(testName = "Verify invalid login details fail test", dataProvider = "InvalidLoginCreds", dataProviderClass = DataProviders.class, description = "Verify if user is not able to login using invalid credentials fail")
