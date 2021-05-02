@@ -60,7 +60,6 @@ Below are the component details of the framework:
         - selenium grid
         - selenoid
     
-    **Note:** Will add support to run using Jenkins.
 
 -   #### Other Components
     - [JavaMail API](https://mvnrepository.com/artifact/com.sun.mail/javax.mail) and [JavaBeans(TM) Activation Framework](https://mvnrepository.com/artifact/javax.activation/activation) is used to send the test report automatically on email using gmail or outlook. However, user can still decide if report has to be send or not.<br/>
