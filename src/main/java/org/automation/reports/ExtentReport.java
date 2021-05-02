@@ -61,7 +61,7 @@ public final class ExtentReport {
 			spark.config().setReportName(GlobalVars.getReportName());
 			spark.config().setEncoding(GlobalVars.getUtf8());
 			spark.config().setTimeStampFormat(GlobalVars.getDateTimeFormat2());
-			spark.config().setOfflineMode(true);
+			// spark.config().setOfflineMode(true);
 
 			// Setting up information
 			try {
