@@ -114,7 +114,7 @@ Below are the component details of the framework:
     -   Status
     -   ExecutionTime
         
-        **Note:** More fields can be added and changes should be done accordingly in ELKUtils.class
+        **Note:** More fields can be added and changes should be done accordingly in ELKUtils.java
 
 ### How to set up:
 [Selenoid](SetupReadMe/Selenoid.md)  
