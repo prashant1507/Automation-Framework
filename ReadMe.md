@@ -5,7 +5,7 @@ This is a java selenium framework which is using testng, maven, extent report, s
 [Project's Java Docs](java-doc)   
 [Sample Test Report](framework-generate-sample-report/ExecutionReport.html)   
 [Sample Test Video](framework-generate-sample-report)   
-[Properties file for execution settings](src/test/resources/config/Config.properties)
+[Execution Settings](src/test/resources/config/Config.properties)
 
 ### _Project Features_
 - Supports parallel test.   
