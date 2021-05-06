@@ -19,6 +19,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.Test;
+import org.testng.xml.XmlSuite;
 
 /**
  * To set various methods for handling test cases
@@ -40,6 +41,9 @@ public class Listener implements ITestListener, ISuiteListener {
 	 * Apr 8, 2021
 	 */
 	public void onStart(ISuite suite) {
+		XmlSuite a = suite.getXmlSuite();
+		int z = a.getThreadCount();
+
 		try {
 			if (PropertyUtils.get(ConfigMap.SENDMAILAFTEREXECUTION)
 					.equalsIgnoreCase(GlobalVars.getYes())) {
