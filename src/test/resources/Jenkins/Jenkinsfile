@@ -122,8 +122,8 @@ pipeline {
         always {
             publishHTML([
             allowMissing: false,
-            alwaysLinkToLastBuild: false,
-            keepAll: false,
+            alwaysLinkToLastBuild: true,
+            keepAll: true,
             reportDir: 'test-reports',
             reportFiles: '*.html',
             reportName: 'Test Execution Report',
