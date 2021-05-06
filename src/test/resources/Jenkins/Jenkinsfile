@@ -44,7 +44,7 @@ pipeline {
         // }
         stage('Clean workspace') {
             steps {
-                deleteDir()
+                cleanWs()
                 checkout scm
             }
         }
@@ -120,14 +120,14 @@ pipeline {
     }
     post {
         always {
-            publishHTML target: [
-                allowMissing: false,
-                alwaysLinkToLastBuild: false,
-                keepAll: false,
-                reportDir: 'test-reports',
-                reportFiles: '*.html',
-                reportName: 'Test Execution Report'
-            ]
+            publishHTML([
+            allowMissing: false,
+            alwaysLinkToLastBuild: false,
+            keepAll: false,
+            reportDir: 'test-reports',
+            reportFiles: '*.html',
+            reportName: 'Test Execution Report',
+            reportTitles: ''])
         }
     }
 }
