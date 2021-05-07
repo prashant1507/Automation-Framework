@@ -4,7 +4,6 @@
 .classpath
 .factorypath
 .project
-.idea
 .DS_STORE
 old-report-data.json
 target
@@ -13,3 +12,4 @@ test-report-videos
 test-reports
 test-screenshots
 AutomationFramework.iml
+**/*terraform*
