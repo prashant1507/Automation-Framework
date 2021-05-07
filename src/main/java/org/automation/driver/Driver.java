@@ -148,7 +148,7 @@ public final class Driver {
 			} else if (os.startsWith(GlobalVars.getMacOs())) {
 				driver = GlobalVars.getMacChromeDriverPath();
 				Runtime.getRuntime().exec(GlobalVars.getExecutePermission() + driver);
-			} else if (true) {
+			} else {
 				driver = GlobalVars.getLinuxChromeDriverPath();
 				Runtime.getRuntime().exec(GlobalVars.getExecutePermission() + driver);
 			}
@@ -174,7 +174,7 @@ public final class Driver {
 			} else if (os.startsWith(GlobalVars.getMacOs())) {
 				driver = GlobalVars.getMacosFirefoxDriverPath();
 				Runtime.getRuntime().exec(GlobalVars.getExecutePermission() + driver);
-			} else if (true) {
+			} else {
 				driver = GlobalVars.getLinuxFirefoxDriverPath();
 				Runtime.getRuntime().exec(GlobalVars.getExecutePermission() + driver);
 			}

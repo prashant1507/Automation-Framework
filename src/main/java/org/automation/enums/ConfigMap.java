@@ -1,10 +1,8 @@
 package org.automation.enums;
 
 /**
- * 
+ *
  * Key name of all the properties mentioned in property file.
- * <br>
- * Class is final to avoid extend.
  * <br><br>
  * Apr 8, 2021
  * @author User1
@@ -30,5 +28,5 @@ public enum ConfigMap {
 	SENDMAILUSING,
 	SENDERSID,
 	EMAILPASSWORD,
-	RECEIVERSID;
+	RECEIVERSID
 }
