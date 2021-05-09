@@ -93,6 +93,10 @@ public final class Driver {
 						"Test_" + (new SimpleDateFormat(GlobalVars.getDateTimeFormat1()).format(new Date())));
 				DriverManager
 						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigMap.REMOTEURL)), cap));
+			} else if (PropertyUtils.get(ConfigMap.RUNMODE).equalsIgnoreCase(GlobalVars.getZalenium())) {
+				// set capabilities if required. Refer website
+				DriverManager
+						.setDriver(new RemoteWebDriver(new URL(PropertyUtils.get(ConfigMap.REMOTEURL)), cap));
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
