@@ -2,6 +2,7 @@ version: "3"
 services:
   zalenium:
     image: "dosel/zalenium"
+    restart: always
     container_name: zalenium
     hostname: zalenium
     tty: true
@@ -39,6 +40,7 @@ services:
       - LT_ACCESS_KEY
   mock:
     image: elgalu/selenium
+    restart: always
     depends_on:
       - zalenium
     ports:
