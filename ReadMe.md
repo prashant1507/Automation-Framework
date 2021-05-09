@@ -27,7 +27,7 @@ This is a java selenium framework which is using testng, maven, extent report, s
 - [Selenium Grid 4](src/test/resources/docker/docker-compose-selenium-grid.yml)
 - [Selenoid](src/test/resources/docker/Selenoid/docker-compose-selenoid.yml)
 - [Zalenium](src/test/resources/docker/docker-compose-zalenium.yml)
-- [Dynamic Grid 4](src/test/resources/docker/Dynamic%20Selenium%20Grid/docker-compose-dynamic-grid.yml)
+- [Dynamic Selenium Grid 4](src/test/resources/docker/Dynamic%20Selenium%20Grid/docker-compose-dynamic-grid.yml)
 
 ### _Project Components_
 Below are the component details of the framework:
@@ -127,7 +127,7 @@ Below are the component details of the framework:
 
 ### How to set up:
 - [Selenoid](SetupReadMe/Selenoid.md)  
-- [Docker-Grid](SetupReadMe/Docker-Selenium-Grid.md)   
+- [Docker Selenium Grid](SetupReadMe/Docker-Selenium-Grid.md)   
 - [Dynamic Selenium Grid](SetupReadMe/Dynamic-Selenium-Grid.md)
 
 ### Notes:
