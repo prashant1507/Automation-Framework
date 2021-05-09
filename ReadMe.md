@@ -17,10 +17,17 @@ This is a java selenium framework which is using testng, maven, extent report, s
 - Option to run tests on local or remote.
 - Read data from Properties file, Excel, JSON files.
 - Real time reporting using ELK.
-- Option to run on docker grid or selenoid.<br/>
+- Option to run on docker grid, local, zalenium or selenoid.<br/>
 - Run using [JenkinsFile](src/test/resources/Jenkins/Jenkinsfile).
 - [JenkinsFile to setup docker-selenium-grid](src/test/resources/Jenkins/Jenkinsfile-selenium-grid).
-  
+
+### _Docker Compose File_
+- [Elastic Search Kibana](src/test/resources/docker/docker-compose-elastic-search-kibana.yml)
+- [Jenkins](src/test/resources/docker/docker-compose-jenkins.yml)
+- [Selenium Grid 4](src/test/resources/docker/docker-compose-selenium-grid.yml)
+- [Selenoid](src/test/resources/docker/docker-compose-selenoid.yml)
+- [Zalenium](src/test/resources/docker/docker-compose-zelenium.yml)
+
 ### _Project Components_
 Below are the component details of the framework:
 
@@ -124,3 +131,8 @@ Below are the component details of the framework:
 1.	For Jenkins to support extent reporting (or other CSS, etc. components ) run below in scripts `https://jenkisURL/script`
       `System.setProperty("hudson.model.DirectoryBrowserSupport.CSP","")`	
 2. Project required [lombok setup](https://www.baeldung.com/lombok-ide).
+
+### References:
+- [Zalenium](https://opensource.zalando.com/zalenium/)
+- [Selenium Grid 4](https://github.com/SeleniumHQ/docker-selenium)
+- [Selenoid](https://github.com/aerokube/selenoid)

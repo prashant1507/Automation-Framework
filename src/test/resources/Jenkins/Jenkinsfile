@@ -13,7 +13,7 @@ pipeline {
         string(name: 'Env', defaultValue: 'Production', description: 'Environment name')
         string(name: 'TesterName', defaultValue: 'QA Test User', description: 'Name of the tester who is running the test.')
         choice(choices: ['no', 'yes'], name: 'DownloadWebDriver', description: 'Do you want the web drivers to be download automatically?')
-        choice(choices: ['grid', 'selenoid', 'local'], name: 'RunMode', description: 'Perform execution on')
+        choice(choices: ['grid', 'selenoid', 'local', 'zalenium'], name: 'RunMode', description: 'Perform execution on')
         string(name: 'RemoteUrl', defaultValue: 'http://192.168.0.142:4444/wd/hub/', description: 'Url of the remote environment. Required if RunMode is Yes')
         choice(choices: ['yes', 'no'], name: 'UseElk', description: 'Is Real-Time Dashboard ELK is setup?')
         string(name: 'ElasticSearchUrl', defaultValue: 'http://192.168.0.142:9200/automation/result', description: 'If ELK is ready to use then provide the URL of the elastic search.')

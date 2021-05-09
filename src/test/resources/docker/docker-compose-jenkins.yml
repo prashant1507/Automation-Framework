@@ -6,9 +6,8 @@ services:
     privileged: true
     user: root
     ports:
-      - 8082:8080
+      - 8080:8080
       - 50003:50000
-    container_name: jenkins-container
     volumes:
       - ~/Desktop/jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock

@@ -62,4 +62,5 @@ public class GlobalVars {
 	@Getter final String grid = "grid";
 	@Getter final String local = "local";
 	@Getter final String selenoid = "selenoid";
+	@Getter final String zalenium = "zalenium";
 }
