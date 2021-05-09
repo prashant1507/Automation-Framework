@@ -25,8 +25,9 @@ This is a java selenium framework which is using testng, maven, extent report, s
 - [Elastic Search Kibana](src/test/resources/docker/docker-compose-elastic-search-kibana.yml)
 - [Jenkins](src/test/resources/docker/docker-compose-jenkins.yml)
 - [Selenium Grid 4](src/test/resources/docker/docker-compose-selenium-grid.yml)
-- [Selenoid](src/test/resources/docker/docker-compose-selenoid.yml)
+- [Selenoid](src/test/resources/docker/Selenoid/docker-compose-selenoid.yml)
 - [Zalenium](src/test/resources/docker/docker-compose-zalenium.yml)
+- [Dynamic Grid 4](src/test/resources/docker/Dynamic%20Selenium%20Grid/docker-compose-dynamic-grid.yml)
 
 ### _Project Components_
 Below are the component details of the framework:
@@ -125,8 +126,9 @@ Below are the component details of the framework:
         **Note:** More fields can be added and changes should be done accordingly in ELKUtils.java
 
 ### How to set up:
-[Selenoid](SetupReadMe/Selenoid.md)  
-[Docker-Grid](SetupReadMe/Docker-Grid.md)
+- [Selenoid](SetupReadMe/Selenoid.md)  
+- [Docker-Grid](SetupReadMe/Docker-Grid.md)   
+- [Dynamic Selenium Grid](SetupReadMe/Dynamic-Selenium-Grid.md)
 
 ### Notes:
 1.	For Jenkins to support extent reporting (or other CSS, etc. components ) run below in scripts `https://jenkisURL/script`
