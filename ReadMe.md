@@ -17,7 +17,8 @@ This is a java selenium framework which is using testng, maven, extent report, s
 - Option to run tests on local or remote.
 - Read data from Properties file, Excel, JSON files.
 - Real time reporting using ELK.
-- Option to run on docker grid, local, zalenium or selenoid.<br/>
+- Option to run on docker grid, local, zalenium or selenoid.
+- On-demand instance creation using [Zalenium](https://opensource.zalando.com/zalenium/)
 - Run using [JenkinsFile](src/test/resources/Jenkins/Jenkinsfile).
 - [JenkinsFile to setup docker-selenium-grid](src/test/resources/Jenkins/Jenkinsfile-selenium-grid).
 
@@ -130,7 +131,7 @@ Below are the component details of the framework:
 ### Notes:
 1.	For Jenkins to support extent reporting (or other CSS, etc. components ) run below in scripts `https://jenkisURL/script`
       `System.setProperty("hudson.model.DirectoryBrowserSupport.CSP","")`	
-2. Project required [lombok setup](https://www.baeldung.com/lombok-ide).
+2. Uses [lombok](https://www.baeldung.com/lombok-ide).
 
 ### References:
 - [Zalenium](https://opensource.zalando.com/zalenium/)

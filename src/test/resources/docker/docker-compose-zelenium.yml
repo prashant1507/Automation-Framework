@@ -14,7 +14,8 @@ services:
     command: >
       start --desiredContainers 2
             --maxDockerSeleniumContainers 8
-            --screenWidth 800 --screenHeight 600
+            --screenWidth 800
+            --screenHeight 600
             --timeZone "Europe/Berlin"
             --videoRecordingEnabled true
             --sauceLabsEnabled false
@@ -36,8 +37,6 @@ services:
       - CBT_AUTHKEY
       - LT_USERNAME
       - LT_ACCESS_KEY
-
-
   mock:
     image: elgalu/selenium
     depends_on:
