@@ -26,7 +26,7 @@ This is a java selenium framework which is using testng, maven, extent report, s
 - [Jenkins](src/test/resources/docker/docker-compose-jenkins.yml)
 - [Selenium Grid 4](src/test/resources/docker/docker-compose-selenium-grid.yml)
 - [Selenoid](src/test/resources/docker/docker-compose-selenoid.yml)
-- [Zalenium](src/test/resources/docker/docker-compose-zelenium.yml)
+- [Zalenium](src/test/resources/docker/docker-compose-zalenium.yml)
 
 ### _Project Components_
 Below are the component details of the framework:
