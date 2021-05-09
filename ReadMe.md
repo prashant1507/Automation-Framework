@@ -93,7 +93,6 @@ Below are the component details of the framework:
      -  if `runmode` is yes then user has to provide the remote url in `remoteurl`.
 -   `environment` which is to be tested.
 -   `testername` name of the tester.
--   `downloadwebdriver` to decide if tester wants to place the drivers or wants the framework to download it with [WebDriverManager](https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager).
 -   To delete old report data:
     ```
     deleteoldreports - to elect if tester wants to delete old reports. Accepts yes or no.
