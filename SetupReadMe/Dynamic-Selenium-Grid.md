@@ -1,4 +1,4 @@
-## _Dynamic Grid _
+## _Dynamic Grid_
 
 1. Docker demon should be accessible. Temporary below command can be executed
    ```
