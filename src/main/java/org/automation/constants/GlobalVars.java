@@ -49,7 +49,6 @@ public class GlobalVars {
 
 	@Getter final String dateTimeFormat1 = "dd_MM_yyyy_hh_mm_ss_SSS";
 	@Getter final String dateTimeFormat2 = "dd/MM/yyyy HH:mm:ss";
-	@Getter final String utf8 = "UTF-8";
 	@Getter final String reportName = "QA Test Report";
 	@Getter final String reportTitle = "Test Report";
 	@Getter final int explicitWait = 10;
@@ -57,7 +56,6 @@ public class GlobalVars {
 	@Getter final String yes = "yes";
 	@Getter final String no = "no";
 	@Getter final String executePermission = "chmod u+x ";
-	@Getter final String execution = "Execution";
 
 	@Getter final String grid = "grid";
 	@Getter final String local = "local";
