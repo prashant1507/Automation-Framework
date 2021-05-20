@@ -91,8 +91,8 @@ Below are the component details of the framework:
 -   `downloadwebdriver` to decide if tester want to place the drivers or wants the framework to download it with the help of [WebDriverManager](https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager).
 -	`runmode` decides whether to run test cases on local, grid (/ docker-grid), zalenium or selenoid. Accepts yes or no.
      -  if `runmode` is yes then user has to provide the remote url in `remoteurl`.
--   `environment` which is to be tested.
--   `testername` name of the tester.
+-   `useelk` yes if elk is deployed
+    -   `elksuiteurl` if yes provide the url for kibana
 -   To delete old report data:
     ```
     deleteoldreports - to elect if tester wants to delete old reports. Accepts yes or no.
