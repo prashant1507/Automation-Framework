@@ -51,7 +51,7 @@ public class Listener implements ITestListener, ISuiteListener {
 			}
 		} catch (Exception e) {
 			UserInputCheck.designerOutputForPasswordError();
-			System.exit(0);
+			System.exit(1);
 		}
 		FileSystemHandler.deleteOldReports();
 		FileSystemHandler.deleteDir(GlobalVars.getScreenshotDir());
